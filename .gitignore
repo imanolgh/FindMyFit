@@ -1,4 +1,5 @@
-
+.env
 composer.phar
 composer-setup.php
-find_my_fit/composer.lock
+composer.lock
+/vendor
