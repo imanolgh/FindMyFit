@@ -4,8 +4,8 @@
 `composer require intervention/image`
 
 # To Configure User Auth
-`composer require laravel/breeze --dev`
-`php artisan breeze:install`
-`php artisan migrate`
-`npm install`
-`npm run dev`
+1) `composer require laravel/breeze --dev`
+2) `php artisan breeze:install`
+3) `php artisan migrate`
+4) `npm install`
+5) `npm run dev`
