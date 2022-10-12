@@ -17,13 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/wardrobe', function () {
-    return view('wardrobe');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
 Route::get('store_image', [StoreImageController::class, 'index']);
@@ -31,3 +24,7 @@ Route::get('store_image', [StoreImageController::class, 'index']);
 Route::post('store_image/insert_image', [StoreImageController::class, 'insert_image']);
 
 Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image']);
+
+Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
+
+require __DIR__.'/auth.php';
