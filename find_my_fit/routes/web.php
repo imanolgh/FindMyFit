@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\StoreImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +20,14 @@ Route::get('/', function () {
 Route::get('/wardrobe', function () {
     return view('wardrobe');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('store_image', [StoreImageController::class, 'index']);
+
+Route::post('store_image/insert_image', [StoreImageController::class, 'insert_image']);
+
+Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image']);
