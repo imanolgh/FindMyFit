@@ -25,4 +25,8 @@ Route::get('/wardrobe', function () {
     return view('wardrobe');
 })->middleware(['auth', 'verified'])->name('wardrobe');
 
+Route::get('/home', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
+
 require __DIR__.'/auth.php';
