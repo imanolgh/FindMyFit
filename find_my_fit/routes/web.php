@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 require __DIR__.'/auth.php';
 
 Route::get('store_image', [StoreImageController::class, 'index']);
@@ -27,4 +28,11 @@ Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_
 
 Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 
+Route::get('/outfit_generation', function () {
+    return view('outfit_generation');
+});
+
+Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit']) -> name('generate_outfit');
+
 require __DIR__.'/auth.php';
+
