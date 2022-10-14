@@ -2,7 +2,7 @@
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Insert Image into Mysql Database in Laravel 6</title>
+ <title>Insert Image into Wardrobe</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -10,7 +10,7 @@
 <body>
  <div class="container">    
   <br />
-  <h3 align="center">Insert Image into Mysql Database in Laravel 6</h3>
+  <h3 align="center">Insert Image into Wardrobe</h3>
     <br />
     @if($errors->any())
     <div class="alert alert-danger">
@@ -39,7 +39,7 @@
           @csrf
           <div class="form-group">
           <div class="row">
-           <label class="col-md-4" align="right">Enter Name</label>
+           <label class="col-md-4" align="right">Enter Info</label>
            <div class="col-md-8">
             <input type="text" name="user_name" class="form-control" />
            </div>
@@ -47,7 +47,7 @@
          </div>
          <div class="form-group">
           <div class="row">
-           <label class="col-md-4" align="right">Select Profile Image</label>
+           <label class="col-md-4" align="right">Select Image</label>
            <div class="col-md-8">
             <input type="file" name="user_image" />
            </div>
@@ -56,7 +56,9 @@
          <div class="form-group" align="center">
           <br />
           <br />
-          <input type="submit" name="store_image" class="btn btn-primary" value="Save" />
+          <button type="button" onclick="window.location='/wardrobe'">Back</button>
+          <input type="submit" name="store_image" class="btn btn-primary" value="Upload" />
+          
          </div>
          </form>
       </div>
