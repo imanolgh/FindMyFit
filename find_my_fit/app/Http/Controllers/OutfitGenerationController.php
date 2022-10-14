@@ -10,7 +10,7 @@ class OutfitGenerationController extends Controller
     
 
     //basic outfit generator
-    public function basic_outfit(int $temp){
+    public function basic_outfit(){
         $data = array(
         'inner shirt' => "white tshirt",
         'outer wear' => "leather jacket",
