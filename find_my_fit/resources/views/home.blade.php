@@ -18,15 +18,7 @@
       <h1 id="temp"></h1>
       <div id="location"></div>
   </div>
-  <!-- <form id="name-form">
-      <div>
-        <label for="first-name">City</label>
-        <input type="text" class="form-control" id="city" value="" required>
-      </div>
-    <button type="submit">Go</button>
 
-    
-  </form> -->
   <p>Click the button to get your coordinates.</p>
 
   <button type="submit" id="loc" onclick="getLocation()">Try It</button>
@@ -37,7 +29,6 @@
     var x = document.getElementById("demo");
     function getLocation() {
       event.preventDefault(); 
-      alert("penis")
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
       } else { 
@@ -65,13 +56,11 @@
   
 
     function drawWeather( d ) {
-      
-      alert("works")
-      var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+      //var celcius = Math.round(parseFloat(d.main.temp)-273.15);
       var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32); 
       
       document.getElementById('description').innerHTML = d.weather[0].description;
-      document.getElementById('temp').innerHTML = celcius + '&deg;';
+      document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
       document.getElementById('location').innerHTML = d.name;
     }
  
