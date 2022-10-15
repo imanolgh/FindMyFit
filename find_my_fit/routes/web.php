@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 
+Route::get('/home', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
+
 require __DIR__.'/auth.php';
 
 Route::get('store_image', [StoreImageController::class, 'index']);
