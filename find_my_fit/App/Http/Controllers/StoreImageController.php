@@ -20,18 +20,22 @@ class StoreImageController extends Controller
     {
      $request->validate([
       'user_name'  => 'required',
-      'user_image' => 'required|image|max:2048'
+      'user_image' => 'required|image|max:2048',
+      'type' => 'required'
      ]);
 
      $image_file = $request->user_image;
 
      $image = Image::make($image_file);
 
+     
+
      Response::make($image->encode('jpeg'));
 
      $form_data = array(
       'user_name'  => $request->user_name,
-      'user_image' => $image
+      'user_image' => $image,
+      'type' => $request->type
      );
 
      Images::create($form_data);

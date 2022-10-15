@@ -45,6 +45,7 @@
            </div>
           </div>
          </div>
+
          <div class="form-group">
           <div class="row">
            <label class="col-md-4" align="right">Select Image</label>
@@ -53,6 +54,21 @@
            </div>
           </div>
          </div>
+
+         <div class="form-group">
+         <div class="row">
+            <label class="col-md-4" align="right">Choose a type:</label>
+            <div class="col-md-8">
+                <input type="radio" name="type" value="Innerwear">
+                <label>Innerwear</label><br>
+                <input type="radio" name="type" value="Outterwear">
+                <label>Outterwear</label><br>
+                <input type="radio" name="type" value="Bottom">
+                <label>Bottom</label>
+            </div>
+        </div>  
+        </div>
+        
          <div class="form-group" align="center">
           <br />
           <br />
@@ -72,13 +88,15 @@
                 <table class="table table-bordered table-striped">
                   <tr>
                      <th width="30%">Image</th>
-                     <th width="70%">Name</th>
+                     <th width="10%">Type</th>
+                     <th width="60%">Name</th>
                   </tr>
                   @foreach($data as $row)
                   <tr>
                    <td>
                     <img src="store_image/fetch_image/{{ $row->id }}"  class="img-thumbnail" width="75" />
                    </td>
+                   <td>{{ $row->type }}</td>
                    <td>{{ $row->user_name }}</td>
                   </tr>
                   @endforeach
