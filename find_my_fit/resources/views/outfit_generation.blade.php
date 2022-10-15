@@ -19,7 +19,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>FindMyFit</b></h3>
+    <h3 class="w3-wide"><b>MyWardrobe</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="#" class="w3-bar-item w3-button">All</a>
@@ -91,105 +91,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-
-  <!-- Product grid -->
-  <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6">
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-         <div class="panel-heading">
-            <div class="w3-row">
-            <div class="w3-container w3-threequarter">
-             <h3 class="panel-title">Inventory</h3>
-            </div>
-            <div class="w3-container w3-quarter">
-             <button type="button" onclick="window.location='/store_image'">Add Outfit</button>
-            </div>
-          </div>
-         </div>
-         <div class="panel-body">
-         <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                  <tr>
-                     <th width="30%">Image</th>
-                     <th width="70%">Name</th>
-                  </tr>
-                  @foreach($data as $row)
-                  <tr>
-                   <td>
-                    <img src="store_image/fetch_image/{{ $row->id }}"  class="img-thumbnail" width="75" />
-                   </td>
-                   <td>{{ $row->user_name }}</td>
-                  </tr>
-                  @endforeach
-              </table>
-              {!! $data->links() !!}
-             </div>
-         </div>
-     </div>
-  <!-- Subscribe section -->
- <!--
-  <div class="w3-container w3-black w3-padding-32">
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
-  </div>
--->
-  <!-- Footer -->
-  <!--
-  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-    <div class="w3-row-padding">
-      <div class="w3-col s4">
-        <h4>Contact</h4>
-        <p>Questions? Go ahead.</p>
-        <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Send</button>
-        </form>
-      </div>
-
-      <div class="w3-col s4">
-        <h4>About</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">We're hiring</a></p>
-        <p><a href="#">Support</a></p>
-        <p><a href="#">Find store</a></p>
-        <p><a href="#">Shipment</a></p>
-        <p><a href="#">Payment</a></p>
-        <p><a href="#">Gift card</a></p>
-        <p><a href="#">Return</a></p>
-        <p><a href="#">Help</a></p>
-      </div>
-
-      <div class="w3-col s4 w3-justify">
-        <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-        <h4>We accept</h4>
-        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-        <br>
-        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-        <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
-        <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
-        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
-      </div>
-    </div>
-  </footer>
--->
-  <div class="w3-black w3-center w3-padding-24">Powered by findmyfit</a></div>
-
-  <!-- End page content -->
-</div>
+<button>Generate Outfit</button>
+<button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit 2</button>
 
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
@@ -226,11 +129,8 @@ function expandCat(cat) {
     x.className = x.className.replace(" w3-show", "");
   }
 }
-
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
-
-
 // Open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
