@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -114,13 +115,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
                 <table class="table table-bordered table-striped">
                   <tr>
                      <th width="30%">Image</th>
-                     <th width="70%">Name</th>
+                     <th width="10%">Type</th>
+                     <th width="60%">Name</th>
                   </tr>
                   @foreach($data as $row)
                   <tr>
                    <td>
                     <img src="store_image/fetch_image/{{ $row->id }}"  class="img-thumbnail" width="75" />
                    </td>
+                   <td>{{ $row->type }}</td>
                    <td>{{ $row->user_name }}</td>
                   </tr>
                   @endforeach
