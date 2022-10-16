@@ -15,3 +15,6 @@
 
 # Save image to Database
 1) https://www.webslesson.info/2020/01/larvel-6-store-retrieve-images-from-mysql-database.html
+
+# App template
+1) https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_clothing_store&stacked=h
