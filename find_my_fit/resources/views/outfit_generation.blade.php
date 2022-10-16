@@ -91,8 +91,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-<button>Generate Outfit</button>
-<button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit 2</button>
+<button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
 
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">

@@ -34,7 +34,7 @@ Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middle
 
 Route::get('/outfit_generation', function () {
     return view('outfit_generation');
-});
+})->name('outfit_generation_page');
 
 Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit']) -> name('generate_outfit');
 
