@@ -30,11 +30,11 @@ class StoreImageController extends Controller
 
      
 
-     Response::make($image->encode('jpeg'));
+     $image_resize = Response::make($image->encode('jpeg'));
 
      $form_data = array(
       'user_name'  => $request->user_name,
-      'user_image' => $image,
+      'user_image' => $image_resize,
       'type' => $request->type
      );
 
