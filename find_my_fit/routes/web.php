@@ -24,11 +24,11 @@ Route::get('/home', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('store_image', [StoreImageController::class, 'index']);
+Route::get('store_image', [StoreImageController::class, 'index'])->middleware(['auth', 'verified']);
 
-Route::post('store_image/insert_image', [StoreImageController::class, 'insert_image']);
+Route::post('store_image/insert_image', [StoreImageController::class, 'insert_image'])->middleware(['auth', 'verified']);
 
-Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image']);
+Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image'])->middleware(['auth', 'verified']);
 
 Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 
