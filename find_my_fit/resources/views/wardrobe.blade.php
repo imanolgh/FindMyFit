@@ -21,7 +21,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-dropdown-hover w3-container w3-display-container w3-padding-16" style="background-color:white;">
     <h3 class="w3-wide"><b>FindMyFit</b></h3>
     <div class="w3-dropdown-content">
-        <a href="home" class="w3-button">My Oufit</a>
+        <a href="outfit_generation" class="w3-button">My Oufit</a>
      </div>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
