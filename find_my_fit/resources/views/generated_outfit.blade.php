@@ -91,9 +91,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-<div>{{$data['inner shirt']}}</div>
-<div>{{$data['outer wear']}}</div>
-<div>{{$data['pants']}}</div>
+<div>{{$data['inner_shirt_name']}}</div>
+<img src="store_image/fetch_image/{{ $data['inner_shirt_id']}}"  class="img-thumbnail" width="75" />
+<div>{{$data['outer_wear_name']}}</div>
+<img src="store_image/fetch_image/{{ $data['outer_wear_id'] }}"  class="img-thumbnail" width="75" />
+<div>{{$data['pants_name']}}</div>
+<img src="store_image/fetch_image/{{ $data['pants_id'] }}"  class="img-thumbnail" width="75" />
 <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
 <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 

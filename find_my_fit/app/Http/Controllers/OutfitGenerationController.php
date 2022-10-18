@@ -18,19 +18,40 @@ class OutfitGenerationController extends Controller
         $temp = 70;
         if(Auth::check()){
             $user = Auth::id();
+            $inner_shirt_row = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder() -> first();
+            $outer_wear_row = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder() -> first();
+            $pants_row = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder() -> first();
             $data = array(
-                'inner shirt' => Images::where('id', '=', $user) -> where('type', '=', "Innerwear") -> select('user_name') -> inRandomOrder() -> first(),
-                'outer wear' => Images::where('id', '=', $user) -> where('type', '=', "Outterwear") -> select('user_name') -> inRandomOrder() -> first(),
-                'pants' => Images::where('id', '=', $user) -> where('type', '=', "Bottom") -> select('user_name') -> inRandomOrder() -> first(),
+                'inner_shirt_name' => $inner_shirt_row -> user_name,
+                'outer_wear_name' => $outer_wear_row -> user_name,
+                'pants_name' => $pants_row -> user_name,
+                'inner_shirt_id' => $inner_shirt_row -> id,
+                'outer_wear_id' => $outer_wear_row -> id,
+                'pants_id' => $pants_row -> id, 
             );
         }else{
             $data = array(
-                'inner shirt' => "white tshirt",
-                'outer wear' => "leather jacket",
-                'pants' => "blue jeans"
+                'inner shirt_name' => "white tshirt",
+                'outer wear_name' => "leather jacket",
+                'pants_name' => "blue jeans"
                 );
         }
         return view('generated_outfit')->with(compact('data'));
+    }
+
+    //get weather function
+    public function get_weather_message($temp){
+        if($temp>80){
+            return "it will be very hot today";
+        }else if($temp>70){
+            return "the weather is nice outside";
+        }else if($temp>60){
+            return "it will be a slightly chilly day";
+        }else if($temp > 31){
+            return "today is very cold";
+        }else if($temp < 32){
+            return "it is freezing today, make sure to stay warm";
+        }
     }
 
     //basic outfit generator with user
