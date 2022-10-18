@@ -19,6 +19,7 @@ class CreateImagesTable extends Migration
             $table->string('type');
             $table->binary('user_image');
             $table->timestamps();
+            $table->bigInteger('user_id')->references('id')->on('users')->nullable();
         });
     }
 

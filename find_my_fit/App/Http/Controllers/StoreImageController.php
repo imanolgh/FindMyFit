@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Images;
 use Illuminate\Support\Facades\Response;
 use Image;
+use Illuminate\Support\Facades\Auth;
 
 class StoreImageController extends Controller
 {
@@ -21,7 +22,8 @@ class StoreImageController extends Controller
      $request->validate([
       'user_name'  => 'required',
       'user_image' => 'required|image|max:2048',
-      'type' => 'required'
+      'type' => 'required',
+      
      ]);
 
      $image_file = $request->user_image;
@@ -31,11 +33,14 @@ class StoreImageController extends Controller
      
 
      $image_resize = Response::make($image->encode('jpeg'));
-
+     
+     $user = Auth::user(); // get currently logged in user
+     $user_id = $user->id; // get the user's id
      $form_data = array(
       'user_name'  => $request->user_name,
       'user_image' => $image_resize,
-      'type' => $request->type
+      'type' => $request->type,
+      'user_id' => $user_id
      );
 
      Images::create($form_data);

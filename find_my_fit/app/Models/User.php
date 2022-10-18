@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_id'
     ];
 
     /**
@@ -43,5 +44,9 @@ class User extends Authenticatable
     ];
     public function outfit(){
         return $this_>hasOne(Outfit::class);
+    }
+
+    public function images() {
+        return $this->hasMany(Images::class, 'user_id');
     }
 }
