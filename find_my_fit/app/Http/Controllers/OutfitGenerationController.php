@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Image;
+use App\Models\Images;
+use Illuminate\Support\Facades\Response;
 
 class OutfitGenerationController extends Controller
 {
@@ -14,10 +17,11 @@ class OutfitGenerationController extends Controller
     public function basic_outfit(){
         $temp = 70;
         if(Auth::check()){
+            $user = Auth::id();
             $data = array(
-                'inner shirt' => DB::select('SELECT a FROM b ORDER BY RAND() LIMIT 1 WHERE c AND D'),
-                'outer wear' => DB::select('SELECT a FROM b ORDER BY RAND() LIMIT 1WHERE c AND D'),
-                'pants' => DB::select('SELECT a FROM b ORDER BY RAND() LIMIT 1WHERE c AND D'),
+                'inner shirt' => Images::where('id', '=', $user) -> where('type', '=', "Innerwear") -> select('user_name') -> inRandomOrder() -> first(),
+                'outer wear' => Images::where('id', '=', $user) -> where('type', '=', "Outterwear") -> select('user_name') -> inRandomOrder() -> first(),
+                'pants' => Images::where('id', '=', $user) -> where('type', '=', "Bottom") -> select('user_name') -> inRandomOrder() -> first(),
             );
         }else{
             $data = array(
