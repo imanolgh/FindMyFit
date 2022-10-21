@@ -31,14 +31,14 @@ class StoreImageController extends Controller
      $image = Image::make($image_file);
 
      
-
-     $image_resize = Response::make($image->encode('jpeg'));
+     Response::make($image->encode('jpeg'));
+     //$image_resize = Response::make($image->encode('jpeg'));
      
      $user = Auth::user(); // get currently logged in user
      $user_id = $user->id; // get the user's id
      $form_data = array(
       'user_name'  => $request->user_name,
-      'user_image' => $image_resize,
+      'user_image' => $image,
       'type' => $request->type,
       'user_id' => $user_id
      );
