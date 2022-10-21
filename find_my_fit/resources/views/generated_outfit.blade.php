@@ -67,7 +67,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
+
+  <!-- Horizontal nav bar-->
+  <div class="w3-bar w3-black">
+    <a href="{{route('outfit_generation_page')}}" class="w3-bar-item w3-button">Outfit Generator</a>
+    <a href="{{route('wardrobe')}}" class="w3-bar-item w3-button">Wardrobe</a>
+    <a href="{{route('login')}}" class="w3-bar-item w3-button">Log in/ Register</a>
+    <a href="{{route('logout')}}" class="w3-bar-item w3-button">Log out</a>
+  </div>
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">MyWardrobe</p>
@@ -91,12 +98,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-<div>{{$data['inner_shirt_name']}}</div>
+<div>{{$data['inner_shirt_name']}}
 <img src="store_image/fetch_image/{{ $data['inner_shirt_id']}}"  class="img-thumbnail" width="75" />
-<div>{{$data['outer_wear_name']}}</div>
+</div>
+<div>{{$data['outer_wear_name']}}
 <img src="store_image/fetch_image/{{ $data['outer_wear_id'] }}"  class="img-thumbnail" width="75" />
-<div>{{$data['pants_name']}}</div>
+</div>
+<div>{{$data['pants_name']}}
 <img src="store_image/fetch_image/{{ $data['pants_id'] }}"  class="img-thumbnail" width="75" />
+</div>
 <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
 <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 
@@ -110,44 +120,5 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
       <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
     </div>
-  </div>
 </div>
-
-<script>
-// Accordion 
-function expandCat(cat) {
-    if (cat == 1){
-        var x = document.getElementById("Season");
-    }
-    else if (cat == 2) {
-        var x = document.getElementById("Top");
-    }
-    else if (cat == 3) {
-        var x = document.getElementById("Bottom");
-    }
-  if (x.className.indexOf("w3-show") == -1 && cat == 1) {
-    x.className += " w3-show";
-  } 
-  else if (x.className.indexOf("w3-show") == -1 && cat == 2) {
-    x.className += " w3-show";
-  } 
-  else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
-// Open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
-
-</body>
 </html>
