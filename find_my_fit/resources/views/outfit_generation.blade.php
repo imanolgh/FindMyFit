@@ -112,6 +112,23 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <p id="demo"></p>
 
+  <form name="store_weather" id="store_weather" method="post" action="{{route('store_weather')}}">
+    @csrf
+     <div class="form-group">
+       <label for="temp">Temperature:</label>
+       <input type="text" id="temp" name="temp" class="form-control" required="">
+     </div>
+     <div class="form-group">
+      <label for="temp">Description:</label>
+      <input type="text" id="description" name="description" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label for="temp">Location:</label>
+      <input type="text" id="location" name="location" class="form-control" required="">
+    </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+
 <button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
 
 <!-- Newsletter Modal -->
