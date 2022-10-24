@@ -13,47 +13,7 @@
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
 </head>
-<body class="w3-content" style="max-width:1200px">
-
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-      <div class="w3-dropdown-hover w3-container w3-display-container w3-padding-16" style="background-color:white;">
-        <h3 class="w3-wide"><b>FindMyFit</b></h3>
-        <div class="w3-dropdown-content">
-          <a href="wardrobe" class="w3-button">My Wardrobe</a>
-        </div>
-      </div>
-  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="#" class="w3-bar-item w3-button">All</a>
-    <a onclick="expandCat(1)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Season <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="Season" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Spring</a>
-      <a href="#" class="w3-bar-item w3-button">Summer</a>
-      <a href="#" class="w3-bar-item w3-button">Fall</a>
-      <a href="#" class="w3-bar-item w3-button">Winter</a>
-    </div>
-    
-    <a onclick="expandCat(2)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Tops <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="Top" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Shirt</a>
-      <a href="#" class="w3-bar-item w3-button">Jacket</a>
-    </div>
-    
-    <a href="#" class="w3-bar-item w3-button">Bottom</a>
-
-    <a href="#" class="w3-bar-item w3-button">Shoes</a>
-    
-  </div>
-  <!--
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
--->
-</nav>
+<body class="w3-content" style="max-width:100%">
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -65,7 +25,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:250px">
+<div class="w3-main" >
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -100,7 +60,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-<div id="weather">
+<div style="margin-left:50px">
+  <div id="weather">
       <div id="description"></div>
       <h1 id="temp"></h1>
       <div id="location"></div>
@@ -108,9 +69,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <p>Click the button to get your coordinates.</p>
 
-  <button type="submit" id="loc" onclick="getLocation()">Try It</button>
+  <button type="submit" id="loc" onclick="getLocation()">Get current weather conditions</button>
 
   <p id="demo"></p>
+  
+  <p>Enter the weather conditions to generate a suitable outfit</p>
 
   <form name="store_weather" id="store_weather" method="post" action="{{route('store_weather')}}">
     @csrf
@@ -129,7 +92,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
      <button type="submit" class="btn btn-primary">Submit</button>
    </form>
 
-<button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
+    <button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
+</div>
 
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
