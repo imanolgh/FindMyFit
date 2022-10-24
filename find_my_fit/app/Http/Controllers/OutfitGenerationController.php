@@ -11,41 +11,47 @@ use Illuminate\Support\Facades\Response;
 
 class OutfitGenerationController extends Controller
 {
-    
+
 
     //basic outfit generator
     public function basic_outfit(){
-        $temp = 70;
         if(Auth::check()){
             $user = Auth::id();
+            $temp = DB::table('weather') -> where('user_id', '=', $user) -> first() -> temp;
+            $weather_msg = OutfitGenerationController::get_weather_message(intval($temp));
             $inner_shirt_row = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder() -> first();
             $outer_wear_row = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder() -> first();
             $pants_row = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder() -> first();
-            $data = array(
-                'inner_shirt_name' => $inner_shirt_row -> user_name,
-                'outer_wear_name' => $outer_wear_row -> user_name,
-                'pants_name' => $pants_row -> user_name,
-                'inner_shirt_id' => $inner_shirt_row -> id,
-                'outer_wear_id' => $outer_wear_row -> id,
-                'pants_id' => $pants_row -> id, 
-            );
+
+            if($temp > 70){
+                $outfit_data = array(
+                    'inner_shirt_row' => $inner_shirt_row,
+                    'pants_row' => $pants_row,
+                );
+            }else{
+                $outfit_data = array(
+                    'inner_shirt_row' => $inner_shirt_row,
+                    'outer_wear_row' => $outer_wear_row ,
+                    'pants_row' => $pants_row ,
+                );
+            }
         }else{
-            $data = array(
+            $outfit_data = array(
                 'inner shirt_name' => "white tshirt",
                 'outer wear_name' => "leather jacket",
                 'pants_name' => "blue jeans"
                 );
         }
-        return view('generated_outfit')->with(compact('data'));
+        return view('generated_outfit')->with(compact('outfit_data')) -> with(compact('weather_msg'));
     }
 
     //get weather function
     public function get_weather_message($temp){
-        if($temp>80){
-            return "it will be very hot today";
-        }else if($temp>70){
+        if($temp>75){
+            return "it will be very hot today, make sure to stay hydrated";
+        }else if($temp>65){
             return "the weather is nice outside";
-        }else if($temp>60){
+        }else if($temp>55){
             return "it will be a slightly chilly day";
         }else if($temp > 31){
             return "today is very cold";
