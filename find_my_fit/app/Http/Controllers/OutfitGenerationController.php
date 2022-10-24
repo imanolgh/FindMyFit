@@ -17,7 +17,7 @@ class OutfitGenerationController extends Controller
     public function basic_outfit(){
         if(Auth::check()){
             $user = Auth::id();
-            $temp = DB::table('weather') -> where('user_id', '=', $user) -> first() -> temp;
+            $temp = DB::table('weather') -> where('user_id', '=', $user) -> latest() -> first() -> temp;
             $weather_msg = OutfitGenerationController::get_weather_message(intval($temp));
             $inner_shirt_row = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder() -> first();
             $outer_wear_row = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder() -> first();
