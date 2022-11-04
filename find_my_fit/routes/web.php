@@ -34,9 +34,12 @@ Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middle
 
 Route::get('/outfit_generation', function () {
     return view('outfit_generation');
-})->name('outfit_generation_page');
+})->middleware(['auth', 'verified'])->name('outfit_generation_page');
 
-Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit']) -> name('generate_outfit');
+Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit'])->middleware(['auth', 'verified'])->name('generate_outfit');
+
+Route::get('/get_weather', 'App\Http\Controllers\WeatherController@get_weather')->middleware(['auth', 'verified'])->name('get_weather');
+Route::post('/store_weather', 'App\Http\Controllers\WeatherController@store_weather')->middleware(['auth', 'verified'])->name('store_weather');
 
 require __DIR__.'/auth.php';
 

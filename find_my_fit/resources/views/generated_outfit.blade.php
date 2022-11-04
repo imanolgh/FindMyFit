@@ -13,45 +13,8 @@
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
 </head>
-<body class="w3-content" style="max-width:1200px">
+<body class="w3-content" style="max-width:100%">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><b>MyWardrobe</b></h3>
-  </div>
-  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="#" class="w3-bar-item w3-button">All</a>
-    <a onclick="expandCat(1)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Season <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="Season" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Spring</a>
-      <a href="#" class="w3-bar-item w3-button">Summer</a>
-      <a href="#" class="w3-bar-item w3-button">Fall</a>
-      <a href="#" class="w3-bar-item w3-button">Winter</a>
-    </div>
-    
-    <a onclick="expandCat(2)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Tops <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="Top" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Shirt</a>
-      <a href="#" class="w3-bar-item w3-button">Jacket</a>
-    </div>
-    
-    <a href="#" class="w3-bar-item w3-button">Bottom</a>
-
-    <a href="#" class="w3-bar-item w3-button">Shoes</a>
-    
-  </div>
-  <!--
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
--->
-</nav>
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -63,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:250px">
+<div class="w3-main" >
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -77,7 +40,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">MyWardrobe</p>
+    <p class="w3-left">Suggested Outfit</p>
     <!--
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
@@ -98,18 +61,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 -->
-<div>{{$data['inner_shirt_name']}}
-<img src="store_image/fetch_image/{{ $data['inner_shirt_id']}}"  class="img-thumbnail" width="75" />
+<div style = "margin-left:50px">
+  <div>{{$weather_msg}}</div>
+  @foreach($outfit_data as $row)
+  <div>{{$row->user_name}}
+    <img src="store_image/fetch_image/{{$row->id}}"  class="img-thumbnail" width="75" />
+  </div>
+  @endforeach
+  <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
+  <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 </div>
-<div>{{$data['outer_wear_name']}}
-<img src="store_image/fetch_image/{{ $data['outer_wear_id'] }}"  class="img-thumbnail" width="75" />
-</div>
-<div>{{$data['pants_name']}}
-<img src="store_image/fetch_image/{{ $data['pants_id'] }}"  class="img-thumbnail" width="75" />
-</div>
-<button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
-<button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
-
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">

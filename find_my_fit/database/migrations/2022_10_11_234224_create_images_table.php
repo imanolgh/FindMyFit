@@ -21,6 +21,7 @@ class CreateImagesTable extends Migration
             $table->timestamps();
             $table->bigInteger('user_id')->references('id')->on('users')->nullable();
         });
+        DB::statement("ALTER TABLE images MODIFY COLUMN user_image longblob");
     }
 
     /**
