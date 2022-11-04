@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Outfit extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','img'];
+    protected $fillable = [
+        'name',
+        'innerwear',
+        'outterwear',
+        'bottom',
+        'user_id'
+    ];
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }
