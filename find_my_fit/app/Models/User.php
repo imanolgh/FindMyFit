@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function outfit(){
-        return $this_>hasOne(Outfit::class);
+        return $this_>hasMany(Outfit::class);
     }
 
     public function images() {
