@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{{ asset('js/app.js') }}" defer></script>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -75,6 +76,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <p id="demo"></p>
   
   <p>Enter the weather conditions to generate a suitable outfit</p>
+
+  <div id="hello-react">plz2</div>
+  <!--<div>plz</div>-->
+  <!-- <script>
+    alert("hello")
+  </script> -->
 
   <form name="store_weather" id="store_weather" method="post" action="{{route('store_weather')}}">
     @csrf
