@@ -10,6 +10,7 @@
 <body>
  <div class="container">    
   <br />
+  <button type="button" class="w3-large" onclick="window.location='/'">Home</button>
   <h3 align="center">Insert Image into Wardrobe</h3>
     <br />
     @if($errors->any())
@@ -83,7 +84,7 @@
          <div class="form-group" align="center">
           <br />
           <br />
-          <button type="button" onclick="window.location='/wardrobe'">Back</button>
+          <button type="button" class="w3-large" onclick="window.location='/wardrobe'">Back</button>
           <input type="submit" name="store_image" class="btn btn-primary" value="Upload" />
           
          </div>

@@ -15,10 +15,15 @@ return new class extends Migration
     {
         Schema::create('outfits', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->binary('img');
+            $table->bigInteger('user_id')->references('id')->on('users')->nullable();
+            $table->binary('innerwear');
+            $table->binary('outterwear');
+            $table->binary('bottom');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE outfits MODIFY COLUMN innerwear longblob");
+        DB::statement("ALTER TABLE outfits MODIFY COLUMN outterwear longblob");
+        DB::statement("ALTER TABLE outfits MODIFY COLUMN bottom longblob");
     }
 
     /**
