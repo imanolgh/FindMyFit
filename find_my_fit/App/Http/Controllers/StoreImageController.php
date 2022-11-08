@@ -21,7 +21,7 @@ class StoreImageController extends Controller
     {
      $request->validate([
       'user_name'  => 'required',
-      'user_image' => 'required|image|max:2048',
+      'user_image' => 'required|image|max:65536',
       'type' => 'required',
       
      ]);
@@ -40,6 +40,7 @@ class StoreImageController extends Controller
       'user_name'  => $request->user_name,
       'user_image' => $image,
       'type' => $request->type,
+      'color'=> $request->color,
       'user_id' => $user_id
      );
 

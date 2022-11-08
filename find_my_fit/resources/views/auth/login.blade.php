@@ -43,6 +43,7 @@
 
             <div class="flex items-center justify-end mt-4">
             <a href="{{route('register')}}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline" style="margin-right: 20px;">Register</a>
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline" style="margin-right: 20px;">Register</a>
 
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
@@ -53,6 +54,7 @@
                 <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
+
             </div>
         </form>
     </x-auth-card>

@@ -10,6 +10,7 @@
 <body>
  <div class="container">    
   <br />
+  <button type="button" class="w3-large" onclick="window.location='/'">Home</button>
   <h3 align="center">Insert Image into Wardrobe</h3>
     <br />
     @if($errors->any())
@@ -64,7 +65,18 @@
                 <input type="radio" name="type" value="Outterwear">
                 <label>Outterwear</label><br>
                 <input type="radio" name="type" value="Bottom">
-                <label>Bottom</label>
+                <label>Bottom</label><br>
+                <input type="radio" name="type" value="Shoes">
+                <label>Shoes</label>
+            </div>
+        </div>  
+        </div>
+
+        <div class="form-group">
+         <div class="row">
+            <label class="col-md-4" align="right">Choose a color:</label>
+            <div class="col-md-8">
+                <input type="color" id="color" name="color" value="#ff0000"><br><br>
             </div>
         </div>  
         </div>
@@ -72,7 +84,7 @@
          <div class="form-group" align="center">
           <br />
           <br />
-          <button type="button" onclick="window.location='/wardrobe'">Back</button>
+          <button type="button" class="w3-large" onclick="window.location='/wardrobe'">Back</button>
           <input type="submit" name="store_image" class="btn btn-primary" value="Upload" />
           
          </div>

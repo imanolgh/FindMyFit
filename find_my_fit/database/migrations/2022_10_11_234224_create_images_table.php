@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('user_name');
             $table->string('type');
+            $table->string('color');
             $table->binary('user_image');
             $table->timestamps();
             $table->bigInteger('user_id')->references('id')->on('users')->nullable();

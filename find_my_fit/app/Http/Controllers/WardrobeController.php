@@ -20,7 +20,7 @@ class WardrobeController extends Controller
     {
      $request->validate([
       'user_name'  => 'required',
-      'user_image' => 'required|image|max:2048'
+      'user_image' => 'required|image|max:65536'
      ]);
 
      $image_file = $request->user_image;
