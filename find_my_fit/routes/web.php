@@ -22,6 +22,8 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+Route::get('/dashboard', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
+
 require __DIR__.'/auth.php';
 
 Route::get('store_image', [StoreImageController::class, 'index'])->middleware(['auth', 'verified']);
