@@ -23,6 +23,11 @@ class OutfitGenerationController extends Controller
             $outer_wear_row = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder() -> first();
             $pants_row = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder() -> first();
 
+            $inner_shirt_color = $inner_shirt_row -> pluck('color');
+            $outer_wear_color = $outer_wear_row -> pluck('color');
+            $pants_color = $pants_row -> pluck('color');
+            list($r, $g, $b) = sscanf($inner_shirt_color, "#%02x%02x%02x");
+
             if($temp > 70){
                 $outfit_data = array(
                     'inner_shirt_row' => $inner_shirt_row,

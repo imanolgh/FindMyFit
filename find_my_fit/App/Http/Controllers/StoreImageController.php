@@ -40,6 +40,7 @@ class StoreImageController extends Controller
       'user_name'  => $request->user_name,
       'user_image' => $image,
       'type' => $request->type,
+      'color'=> $request->color,
       'user_id' => $user_id
      );
 

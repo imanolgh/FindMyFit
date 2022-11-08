@@ -64,7 +64,18 @@
                 <input type="radio" name="type" value="Outterwear">
                 <label>Outterwear</label><br>
                 <input type="radio" name="type" value="Bottom">
-                <label>Bottom</label>
+                <label>Bottom</label><br>
+                <input type="radio" name="type" value="Shoes">
+                <label>Shoes</label>
+            </div>
+        </div>  
+        </div>
+
+        <div class="form-group">
+         <div class="row">
+            <label class="col-md-4" align="right">Choose a color:</label>
+            <div class="col-md-8">
+                <input type="color" id="color" name="color" value="#ff0000"><br><br>
             </div>
         </div>  
         </div>
