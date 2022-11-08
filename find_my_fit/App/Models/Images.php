@@ -10,6 +10,7 @@ class Images extends Model
     'user_name', 
     'user_image',
     'type',
+    'color',
     'user_id'
     ];
 
