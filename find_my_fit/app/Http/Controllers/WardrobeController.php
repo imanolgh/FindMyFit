@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 use App\Models\Images;
 use Illuminate\Support\Facades\Response;
 use Image;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class WardrobeController extends Controller
 {
     function index()
     {
-     $data = Images::latest()->paginate(5);
+      $user = Auth::user(); // get currently logged in user
+      $user_id = $user->id; // get the user's id
+
+     $data = Images::where('user_id', $user_id)->latest()->paginate(5);
      return view('wardrobe', compact('data'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -41,7 +44,10 @@ class WardrobeController extends Controller
 
     function fetch_image($image_id)
     {
-     $image = Images::findOrFail($image_id);
+      $user = Auth::user(); // get currently logged in user
+      $user_id = $user->id; // get the user's id
+      $image = Images::where('user_id', $user_id)->findOrFail($image_id);
+
 
      $image_file = Image::make($image->user_image);
 
