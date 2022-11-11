@@ -102,7 +102,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   <p>Enter the weather conditions to generate a suitable outfit</p>
 
-  <div id="hello-react">plz2</div>
   <!--<div>plz</div>-->
   <!-- <script>
     alert("hello")
