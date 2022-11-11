@@ -15,12 +15,12 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_name');
+            $table->string('user_name')->nullable();
             $table->string('type');
             $table->string('color');
             $table->binary('user_image');
             $table->timestamps();
-            $table->bigInteger('user_id')->references('id')->on('users')->nullable();
+            $table->bigInteger('user_id')->references('id')->on('users');
         });
         DB::statement("ALTER TABLE images MODIFY COLUMN user_image longblob");
     }
