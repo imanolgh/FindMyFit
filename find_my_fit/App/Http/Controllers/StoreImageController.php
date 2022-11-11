@@ -12,7 +12,10 @@ class StoreImageController extends Controller
 {
     function index()
     {
-     $data = Images::latest()->paginate(5);
+      $user = Auth::user(); // get currently logged in user
+      $user_id = $user->id; // get the user's id
+
+     $data = Images::where('user_id', $user_id)->latest()->paginate(5);
      return view('store_image', compact('data'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -43,7 +46,6 @@ class StoreImageController extends Controller
       'color'=> $request->color,
       'user_id' => $user_id
      );
-
      Images::create($form_data);
 
      return redirect()->back()->with('success', 'Image store in database successfully');
@@ -51,13 +53,19 @@ class StoreImageController extends Controller
 
     function fetch_image($image_id)
     {
-     $image = Images::findOrFail($image_id);
+          //  Shipment::where('display_id', $display_id)->firstOrFail();
+     $user = Auth::user(); // get currently logged in user
+     $user_id = $user->id; // get the user's id
+   
+     $image = Images::where('user_id', $user_id)->findOrFail($image_id);
 
      $image_file = Image::make($image->user_image);
 
      $response = Response::make($image_file->encode('jpeg'));
+    //  return view('dashboard.billing.edit_payment_method', compact('card', 'user'));
 
      $response->header('Content-Type', 'image/jpeg');
+    
 
      return $response;
     }
