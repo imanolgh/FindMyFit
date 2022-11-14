@@ -76,6 +76,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   @endforeach
 
   <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
+  <button type="button"><a href="{{route('generate_outfit')}}">Generate New Outfit</button>
   <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 </div>
 <!-- Newsletter Modal -->
