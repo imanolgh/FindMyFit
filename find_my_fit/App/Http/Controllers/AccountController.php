@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Images;
 use App\Models\Outfit;
+use App\Models\User;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 use Image;
@@ -61,5 +62,13 @@ class AccountController extends Controller
      $response->header('Content-Type', 'image/jpeg');
 
      return $response;
+    }
+
+    function get_social_page()
+    {
+        $user = Auth::id();
+        $social_data = User::where('id', '!=', $user) ->get();
+
+        return view('social')->with(compact('social_data'));
     }
 }
