@@ -105,26 +105,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <form name="store_weather" id="store_weather" method="post" action="{{route('store_weather')}}">
     @csrf
-     <div class="form-group">
-       <label for="temp">Temperature:</label>
-       <input type="text" id="temp" name="temp" class="form-control" required="">
-     </div>
-     <div class="form-group">
-      <label for="temp">Description:</label>
-      <input type="text" id="description" name="description" class="form-control" required="">
-    </div>
-    <div class="form-group">
-      <label for="temp">Location:</label>
-      <input type="text" id="location" name="location" class="form-control" required="">
-    </div>
-     <button type="submit" class="btn btn-primary">Submit</button>
+     
+     {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
    </form>
 
     <button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
 </div>
 
 <!-- Newsletter Modal -->
-<div id="newsletter" class="w3-modal">
+{{-- <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
@@ -134,9 +123,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
     </div>
   </div>
-</div>
+</div> --}}
 
-<script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
 // Accordion 
 function expandCat(cat) {
     if (cat == 1){
@@ -233,8 +222,30 @@ function w3_close() {
       document.getElementById('description').innerHTML = d.weather[0].description;
       document.getElementById('temp').innerHTML = fahrenheit + '&deg;';
       document.getElementById('location').innerHTML = d.name;
+
+      var description = document.getElementById('description').innerHTML;
+      var temp = document.getElementById('temp').innerHTML;
+      var location = document.getElementById('location').innerHTML;
+      
+      axios.post('/store_weather', {
+            // headers: {
+            //   'X-Requested-With': 'XMLHttpRequest',
+            //   'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            // },
+                description: description,
+                temp: temp,
+                location: location
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                console.log('success');
+            })
+            .catch(function (error) {
+                // console.log(error.response.data);
+                console.log('error');
+            });
+      
     }
- 
    
   </script>
 
