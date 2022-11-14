@@ -19,7 +19,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
 
   <div class="container-fluid">
       <div class="row flex-nowrap">
-          <div class=" col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light sticky-top">
+          <div class="min-vh-100 col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light sticky-top">
              <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
                 <a class="d-block p-3 link-dark text-decoration-none">
                   <span id="logo" class="text-secondary fs-2 w3-wide d-none d-sm-inline">FindMyFit</span>
@@ -31,9 +31,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     </a>
                   </li>
                   <li>
-                    <a href="/outfit_generation" class="text-info nav-link py-3 px-2 align-middle">
-                      <i class="fs-2 bi-table"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Fit Me</span></a>
+                    <a href="/test" class="text-info nav-link py-3 px-2 align-middle">
+                      <i class="fs-2 bi-table"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Fit Me</span>
+                    </a>
                   </li>
+                  
                 </ul>
                 
                 <div class="position-fixed pb-4" style="bottom: 0px">
@@ -90,28 +92,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 </div>
                 @endforeach
                 
-                
-                <!-- {!! $data->links() !!} -->
+
               </div> 
-              <!-- <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                  <tr>
-                     <th width="30%">Image</th>
-                     <th width="10%">Type</th>
-                     <th width="60%">Name</th>
-                  </tr>
-                  @foreach($data as $row)
-                  <tr>
-                   <td>
-                    <img src="store_image/fetch_image/{{ $row->id }}"  class="img-thumbnail" width="75" />
-                   </td>
-                   <td>{{ $row->type }}</td>
-                   <td>{{ $row->user_name }}</td>
-                  </tr>
-                  @endforeach
-              </table>
-              {!! $data->links() !!}
-             </div> -->
+  
          </div>   
         </div>
       </div>
