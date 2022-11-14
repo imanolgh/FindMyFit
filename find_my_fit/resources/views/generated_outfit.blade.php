@@ -67,7 +67,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div>{{$row->user_name}}
     <img src="store_image/fetch_image/{{$row->id}}"  class="img-thumbnail" width="75" />
   </div>
+  <div class="color-box" style="background-color: {{$row->color}};">hi</div>
   @endforeach
+
+  @foreach($outfit_descriptions as $row)
+  <div>{{$row[0]}}</div>
+  <div>{{$row[1]}}</div>
+  @endforeach
+
   <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
   <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 </div>
