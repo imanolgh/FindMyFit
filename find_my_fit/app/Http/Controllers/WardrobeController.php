@@ -14,8 +14,8 @@ class WardrobeController extends Controller
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
 
-     $data = Images::where('user_id', $user_id)->latest()->paginate(5);
-     return view('wardrobe', compact('data'))
+     $data = Images::where('user_id', $user_id)->latest()->paginate(50);
+     return view('home', compact('data'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
