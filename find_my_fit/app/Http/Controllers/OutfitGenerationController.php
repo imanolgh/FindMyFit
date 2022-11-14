@@ -22,6 +22,7 @@ class OutfitGenerationController extends Controller
             $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
             $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
             $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+            $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
 
             $tries = 0;
 
@@ -29,14 +30,17 @@ class OutfitGenerationController extends Controller
                 $outfit_descriptions = array(
                     'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                     'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                    'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
                 ) ;
                 
                 while(!OutfitGenerationController::is_neutral_outfit($outfit_descriptions)){
                     $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
                     $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+                    $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
                     $outfit_descriptions = array(
                         'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                         'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                        'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
                     ) ;
                     $tries = $tries + 1;
                     if($tries > 10){
@@ -47,6 +51,7 @@ class OutfitGenerationController extends Controller
                 $outfit_data = array(
                     'inner_shirt_row' => $inner_shirt -> first(),
                     'pants_row' => $pants -> first(),
+                    'shoes_row' => $shoes -> first(),
                 );
                 
             }else{
@@ -54,16 +59,19 @@ class OutfitGenerationController extends Controller
                     'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                     'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
                     'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                    'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
                 ) ;
 
                 while(!OutfitGenerationController::is_neutral_outfit($outfit_descriptions)){
                     $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
                     $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
                     $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+                    $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
                     $outfit_descriptions = array(
                         'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                         'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
                         'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                        'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
                     ) ;
                     $tries = $tries + 1;
                     if($tries > 10){
@@ -75,6 +83,7 @@ class OutfitGenerationController extends Controller
                     'inner_shirt_row' => $inner_shirt -> first(),
                     'outer_wear_row' => $outer_wear -> first() ,
                     'pants_row' => $pants -> first(),
+                    'shoes_row' => $shoes -> first(),
                 );
 
                 
