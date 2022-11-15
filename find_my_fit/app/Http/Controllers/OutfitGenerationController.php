@@ -265,10 +265,12 @@ class OutfitGenerationController extends Controller
     $innerwear = Images::where('id', $outfit[0])->firstOrFail();
     $outterwear = Images::where('id', $outfit[1])->firstOrFail();
     $bottom = Images::where('id', $outfit[2])->firstOrFail();
+    $shoes = Images::where('id', $outfit[3])->firstOrFail();
 
     $innerwear_id = $innerwear->id;
     $outterwear_id = $outterwear->id;
     $bottom_id = $bottom->id;
+    $shoes_id = $shoes->id;
    
     $user = Auth::user(); // get currently logged in user
      $user_id = $user->id; // get the user's id
@@ -276,7 +278,7 @@ class OutfitGenerationController extends Controller
       'innerwear'  => $innerwear_id,
       'outterwear' => $outterwear_id,
       'bottom' => $bottom_id,
-    //   'shoes'=> $shoes->user_image,
+      'shoes'=> $shoes_id,
       'user_id' => $user_id
      );
      

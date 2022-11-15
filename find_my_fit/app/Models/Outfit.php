@@ -13,6 +13,7 @@ class Outfit extends Model
         'innerwear',
         'outterwear',
         'bottom',
+        'shoes',
         'user_id'
     ];
     public function user(){

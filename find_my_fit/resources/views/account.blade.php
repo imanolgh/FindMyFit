@@ -41,9 +41,10 @@
          <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <tr>
-                     <th width="33%">Innerwear</th>
-                     <th width="33%">Outterwear</th>
-                     <th width="34%">Bottom</th>
+                     <th width="25%">Innerwear</th>
+                     <th width="25%">Outterwear</th>
+                     <th width="25%">Bottom</th>
+                     <th width="25%">Shoes</th>
                   </tr>
                   @foreach($data as $row)
                   {{-- {{ var_dump($row->outterwear); }} --}}
@@ -57,6 +58,9 @@
                    <td>
                    <img src="/fetch_bottom/{{ $row->bottom }}"  class="img-thumbnail" width="75" />
                 </td>
+                <td>
+                    <img src="/fetch_shoes/{{ $row->shoes }}"  class="img-thumbnail" width="75" />
+                 </td>
                   </tr>
                   @endforeach
 
