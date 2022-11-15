@@ -79,6 +79,24 @@ class AccountController extends Controller
         return $response;
     }
 
+    function fetch_shoes($shoes)
+    {
+        $user = Auth::user(); // get currently logged in user
+        $user_id = $user->id; // get the user's id
+
+        $shoes_image = Images::where('id', $shoes)
+        ->where('user_id', $user_id)
+        ->firstOrFail();
+       
+        $image_file = Image::make($shoes_image->user_image);
+
+        $response = Response::make($image_file->encode('jpeg'));
+
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
+    }
+
     function get_social_page()
     {
         $user = Auth::id();
