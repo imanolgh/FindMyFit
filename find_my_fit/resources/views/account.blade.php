@@ -13,8 +13,8 @@
  <div class="container">    
   <br />
   <button type="button" class="w3-large" onclick="window.location='/'">Home</button>
-  <h3 align="left">Id : </h3>
-  <h3 align="left">Email : </h3>
+  <h3 align="left">Username : {{$username}}</h3>
+  <h3 align="left">Email : {{$email}}</h3>
     <br />
     @if($errors->any())
     <div class="alert alert-danger">
