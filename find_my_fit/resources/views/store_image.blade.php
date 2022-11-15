@@ -16,7 +16,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
 }
 
     </style>
-
+</head>
+<body>
 <div class="container-fluid">
       <div class="row flex-nowrap">
           <div class="min-vh-100 col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light sticky-top">
@@ -150,25 +151,23 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 </div>
                 </div>
                 <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
-                @foreach($data as $row)
-                <div class="col">
-                
-                  <div class="card">
-                    
-                    <img src="store_image/fetch_image/{{ $row->id }}" class="card-img-top" height=200>
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $row->user_name }}</h5>
-                      <p class="card-text">{{ $row->type }}</p>
+                  @foreach($data as $row)
+                  <div class="col">
+                  
+                    <div class="card">
+                      
+                      <img src="store_image/fetch_image/{{ $row->id }}" class="card-img-top" height=200>
+                      <div class="card-body">
+                        <h5 class="card-title">{{ $row->user_name }}</h5>
+                        <p class="card-text">{{ $row->type }}</p>
+                        
+                      </div>
                       
                     </div>
                     
                   </div>
-                  
-                </div>
-                @endforeach
-                
-
-              </div> 
+                  @endforeach
+                </div> 
             </div>
         </div>
 </div>
