@@ -72,6 +72,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-bar w3-black">
     <a href="{{route('outfit_generation_page')}}" class="w3-bar-item w3-button">Outfit Generator</a>
     <a href="{{route('wardrobe')}}" class="w3-bar-item w3-button">Wardrobe</a>
+    <a href="{{route('account')}}" class="w3-bar-item w3-button">Account</a>
     <a href="{{route('login')}}" class="w3-bar-item w3-button">Log in/ Register</a>
     <a href="{{route('logout')}}" class="w3-bar-item w3-button">Log out</a>
   </div>
