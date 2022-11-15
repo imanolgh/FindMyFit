@@ -78,8 +78,22 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <button type="button"><a href="{{route('outfit_generation_page')}}">Back to Outfit Generation</button>
   <button type="button"><a href="{{route('wardrobe')}}">Wardrobe</button>
 </div>
+
+<div class="container">
+  <form method="post" action="{{ route('store-outfit') }}"
+    enctype="multipart/form-data">
+  @csrf
+  @foreach ($outfit_data as $data)
+   <input type='hidden' name='outfit_data[]' value='{{ $data->id }}'>
+  @endforeach
+ 
+   <input type="submit" value="Submit" >
+ 
+  </form>
+</div>
+
 <!-- Newsletter Modal -->
-<div id="newsletter" class="w3-modal">
+{{-- <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
@@ -88,5 +102,5 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
       <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
     </div>
-</div>
+</div> --}}
 </html>

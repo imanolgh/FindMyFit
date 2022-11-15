@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Models\Images;
+use App\Models\Outfit;
+
 use Illuminate\Support\Facades\Response;
 
 class OutfitGenerationController extends Controller
@@ -243,4 +245,42 @@ class OutfitGenerationController extends Controller
         );
         return view('generated_outfit')->with(compact('data'));
     }
+
+
+
+    function insert_outfit(Request $request)
+    {
+    $outfit = $request->outfit_data;
+    // dd($outfit);
+   
+    $innerwear = Images::where('id', $outfit[0])->firstOrFail();
+    $outterwear = Images::where('id', $outfit[1])->firstOrFail();
+    $bottom = Images::where('id', $outfit[2])->firstOrFail();
+
+    $innerwear_id = $innerwear->id;
+    $outterwear_id = $outterwear->id;
+    $bottom_id = $bottom->id;
+   
+    $user = Auth::user(); // get currently logged in user
+     $user_id = $user->id; // get the user's id
+     $form_data = array(
+      'innerwear'  => $innerwear_id,
+      'outterwear' => $outterwear_id,
+      'bottom' => $bottom_id,
+    //   'shoes'=> $shoes->user_image,
+      'user_id' => $user_id
+     );
+     
+     Outfit::create($form_data);
+     $data = Outfit::latest()->paginate(5);
+
+    
+    //  $user_email = $user->email;
+    // $user_name = $user->name
+    return view('account', compact('data'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+   
+   
+    }
+
 }
