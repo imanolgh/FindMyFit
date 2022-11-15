@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-})->name('home');
+})->middleware(['auth', 'verified'])->name('home');
 
-Route::get('/test', function () {
+Route::get('/fitme', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 

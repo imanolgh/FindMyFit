@@ -32,8 +32,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     </a>
                   </li>
                   <li>
-                    <a href="/test" class="text-info nav-link py-3 px-2 align-middle">
+                    <a href="/fitme" class="text-info nav-link py-3 px-2 align-middle">
                       <i class="fs-2 bi-table"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Fit Me</span></a>
+                  </li>
+                  <li>
+                    <a href="/social_page" class="text-info nav-link py-3 px-2 align-middle">
+                      <i class="fs-2 bi-compass"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Discover</span></a>
                   </li>
                   
                 </ul>
