@@ -19,11 +19,13 @@ return new class extends Migration
             $table->binary('innerwear');
             $table->binary('outterwear');
             $table->binary('bottom');
+            $table->binary('shoes');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE outfits MODIFY COLUMN innerwear longblob");
         DB::statement("ALTER TABLE outfits MODIFY COLUMN outterwear longblob");
         DB::statement("ALTER TABLE outfits MODIFY COLUMN bottom longblob");
+        DB::statement("ALTER TABLE outfits MODIFY COLUMN shoes longblob");
     }
 
     /**
