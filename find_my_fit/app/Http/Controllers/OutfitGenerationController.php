@@ -28,35 +28,7 @@ class OutfitGenerationController extends Controller
 
             $tries = 0;
 
-            if($temp > 70){
-                $outfit_descriptions = array(
-                    'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
-                    'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
-                    'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
-                ) ;
-                
-                while(!OutfitGenerationController::is_neutral_outfit($outfit_descriptions)){
-                    $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
-                    $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
-                    $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
-                    $outfit_descriptions = array(
-                        'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
-                        'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
-                        'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
-                    ) ;
-                    $tries = $tries + 1;
-                    if($tries > 10){
-                        break;
-                    }
-                }
-
-                $outfit_data = array(
-                    'inner_shirt_row' => $inner_shirt -> first(),
-                    'pants_row' => $pants -> first(),
-                    'shoes_row' => $shoes -> first(),
-                );
-                
-            }else{
+            
                 $outfit_descriptions = array(
                     'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                     'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
@@ -89,7 +61,7 @@ class OutfitGenerationController extends Controller
                 );
 
                 
-            }
+            
         
             return view('generated_outfit')->with(compact('outfit_data')) -> with(compact('weather_msg'))->with(compact('outfit_descriptions'));
         }
@@ -274,6 +246,8 @@ class OutfitGenerationController extends Controller
    
     $user = Auth::user(); // get currently logged in user
      $user_id = $user->id; // get the user's id
+     $email = $user->email;
+     $username = $user->name;
      $form_data = array(
       'innerwear'  => $innerwear_id,
       'outterwear' => $outterwear_id,
@@ -289,7 +263,7 @@ class OutfitGenerationController extends Controller
     //  $user_email = $user->email;
     // $user_name = $user->name
     return view('account', compact('data'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'))->with(compact('email'));
    
    
     }
