@@ -97,10 +97,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
           <div>{{$row[0]}}</div>
           <div>{{$row[1]}}</div>
           @endforeach
-
-          <button class="btn btn-light" type="button"><a href="{{route('generate_outfit')}}">Generate New Outfit</button>
+        
+        
         </div>
-        <div class="container">
+
+        <div class="m-3">
+          <button class="btn btn-info" type="button"><a class="text-decoration-none text-black" href="{{route('generate_outfit')}}">Generate New Outfit</button>
+        </div>
+        <div class="m-3">
           <form method="post" action="{{ route('store-outfit') }}"
             enctype="multipart/form-data">
           @csrf
@@ -108,7 +112,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
           <input type='hidden' name='outfit_data[]' value='{{ $data->id }}'>
           @endforeach
         
-          <input type="submit" value="Submit" >
+          <input class="btn btn-info" type="submit" value="Add to Favorites" >
         
           </form>
         </div>

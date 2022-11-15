@@ -16,7 +16,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
 
     </style>
 <body>
-<<<<<<< HEAD
 
   <div class="container-fluid">
       <div class="row flex-nowrap">
@@ -67,9 +66,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
           </div>
         <div class="col py-3">
             <div class="container">    
-            <br />
-            <h3 align="left">Id : </h3>
-            <h3 align="left">Email : </h3>
+                <br />
+                <h3 align="left">Username : {{$username}}</h3>
+                <h3 align="left">Email : {{$email}}</h3>
                 <br />
                 @if($errors->any())
                 <div class="alert alert-danger">
@@ -125,22 +124,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         </div>
                 </div>
             </div>
-=======
-    
- <div class="container">    
-  <br />
-  <button type="button" class="w3-large" onclick="window.location='/'">Home</button>
-  <h3 align="left">Username : {{$username}}</h3>
-  <h3 align="left">Email : {{$email}}</h3>
-    <br />
-    @if($errors->any())
-    <div class="alert alert-danger">
-           <ul>
-           @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-           @endforeach
-           </ul>
->>>>>>> main
         </div>
     </div>
  </body>
