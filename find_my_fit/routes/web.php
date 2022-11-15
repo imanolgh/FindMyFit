@@ -37,20 +37,18 @@ Route::post('store_image/insert_image', [StoreImageController::class, 'insert_im
 Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image'])->middleware(['auth', 'verified']);
 
 Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
-Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified']);
+Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account');
 
-// Route::get('/account', [AccountController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/fetch_inner/{innerwear}', 'App\Http\Controllers\AccountController@fetch_inner')->middleware(['auth', 'verified']);
+Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController@fetch_outter')->middleware(['auth', 'verified']);
+Route::get('/fetch_bottom/{bottom}', 'App\Http\Controllers\AccountController@fetch_bottom')->middleware(['auth', 'verified']);
 
-Route::get('account/fetch_inner/{id}', [AccountController::class, 'fetch_inner'])->middleware(['auth', 'verified']);
-
-Route::get('account/fetch_outter/{id}', [AccountController::class, 'fetch_outter'])->middleware(['auth', 'verified']);
-
-Route::get('account/fetch_bottom/{id}', [AccountController::class, 'fetch_bottom'])->middleware(['auth', 'verified']);
 
 Route::get('/outfit_generation', function () {
     return view('outfit_generation');
 })->middleware(['auth', 'verified'])->name('outfit_generation_page');
 
+Route::post('/generated_outfit/insert_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'insert_outfit'])->middleware(['auth', 'verified'])->name('store-outfit');
 Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit'])->middleware(['auth', 'verified'])->name('generate_outfit');
 
 Route::get('/social_page', [App\Http\Controllers\AccountController::class, 'get_social_page'])->middleware(['auth', 'verified'])->name('get_social_page');

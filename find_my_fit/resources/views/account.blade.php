@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
  <div class="container">    
   <br />
   <button type="button" class="w3-large" onclick="window.location='/'">Home</button>
@@ -45,18 +46,20 @@
                      <th width="34%">Bottom</th>
                   </tr>
                   @foreach($data as $row)
+                  {{-- {{ var_dump($row->outterwear); }} --}}
                   <tr>
                    <td>
-                    <img src="account/fetch_inner/{{ $row->id }}"  class="img-thumbnail" width="75" />
+                    <img src="/fetch_inner/{{ $row->innerwear }}"  class="img-thumbnail" width="75" />
                    </td>
                    <td>
-                   <img src="account/fetch_outter/{{ $row->id }}"  class="img-thumbnail" width="75" />
+                   <img src="/fetch_outter/{{ $row->outterwear }}"  class="img-thumbnail" width="75" />
                    </td>
                    <td>
-                   <img src="account/fetch_bottom/{{ $row->id }}"  class="img-thumbnail" width="75" />
+                   <img src="/fetch_bottom/{{ $row->bottom }}"  class="img-thumbnail" width="75" />
                 </td>
                   </tr>
                   @endforeach
+
               </table>
               {!! $data->links() !!}
              </div>
