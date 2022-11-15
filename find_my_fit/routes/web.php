@@ -47,6 +47,7 @@ Route::post('/generated_outfit/insert_outfit', [App\Http\Controllers\OutfitGener
 Route::get('/generated_outfit', [App\Http\Controllers\OutfitGenerationController::class, 'basic_outfit'])->middleware(['auth', 'verified'])->name('generate_outfit');
 
 Route::get('/social_page', [App\Http\Controllers\AccountController::class, 'get_social_page'])->middleware(['auth', 'verified'])->name('get_social_page');
+Route::post('/store_user_id', 'App\Http\Controllers\AccountController@get_other_account')->middleware(['auth', 'verified'])->name('get_other_account');
 
 
 Route::get('/get_weather', 'App\Http\Controllers\WeatherController@get_weather')->middleware(['auth', 'verified'])->name('get_weather');

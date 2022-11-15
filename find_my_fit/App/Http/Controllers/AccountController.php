@@ -99,6 +99,19 @@ class AccountController extends Controller
         return $response;
     }
 
+    function get_other_account(Request $request){
+        $user_id = $request->user_id;
+        $user = User::where('id', '=', $user_id) ->get();
+        $user_id = $user->value('id'); // get the user's id
+        $username = $user->value('name');
+        $email = $user->value('email');
+  
+       $data = Outfit::where('user_id', $user_id)->latest()->paginate(5);
+        //  $data = Outfit::latest()->paginate(5);
+        return view('account', compact('data'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'));
+    }
+
     function get_social_page()
     {
         $user = Auth::id();
