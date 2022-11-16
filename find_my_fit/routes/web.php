@@ -14,13 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('outfit_generation');
+    return view('auth.login');
 });
 
 
 Route::get('/home', function () {
     return view('home');
 })->name('home');
+
+Route::get('/test', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/dashboard', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 
 require __DIR__.'/auth.php';
 
