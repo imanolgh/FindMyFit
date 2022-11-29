@@ -16,8 +16,14 @@ class OutfitGenerationController extends Controller
 
 
     //basic outfit generator
-    public function basic_outfit(){
+    public function basic_outfit(Request $request){
         if(Auth::check()){
+            $validated = $request->validate([
+                'outfit_type' => 'required',
+            ]);
+
+            $outfit_type = $request->outfit_type;
+
             $user = Auth::id();
             $temp = DB::table('weather') -> where('user_id', '=', $user) -> latest() -> first() -> temp;
             $weather_msg = OutfitGenerationController::get_weather_message(intval($temp));
@@ -36,20 +42,56 @@ class OutfitGenerationController extends Controller
                     'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
                 ) ;
 
-                while(!OutfitGenerationController::is_neutral_outfit($outfit_descriptions)){
-                    $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
-                    $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
-                    $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
-                    $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
-                    $outfit_descriptions = array(
-                        'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
-                        'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
-                        'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
-                        'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
-                    ) ;
-                    $tries = $tries + 1;
-                    if($tries > 10){
-                        break;
+                if($outfit_type == "Neutral"){
+                    while(!OutfitGenerationController::is_neutral_outfit($outfit_descriptions)){
+                        $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
+                        $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
+                        $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+                        $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
+                        $outfit_descriptions = array(
+                            'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
+                            'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
+                            'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                            'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
+                        ) ;
+                        $tries = $tries + 1;
+                        if($tries > 10){
+                            break;
+                        }
+                    }
+                }elseif($outfit_type == "Bright"){
+                    while(!OutfitGenerationController::is_bright_outfit($outfit_descriptions)){
+                        $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
+                        $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
+                        $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+                        $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
+                        $outfit_descriptions = array(
+                            'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
+                            'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
+                            'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                            'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
+                        ) ;
+                        $tries = $tries + 1;
+                        if($tries > 10){
+                            break;
+                        }
+                    }
+                }elseif($outfit_type == "Dark"){
+                    while(!OutfitGenerationController::is_not_bright_outfit($outfit_descriptions)){
+                        $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
+                        $outer_wear = Images::where('user_id', '=', $user) -> where('type', '=', "Outterwear") -> inRandomOrder()->get();
+                        $pants = Images::where('user_id', '=', $user) -> where('type', '=', "Bottom") -> inRandomOrder()->get();
+                        $shoes = Images::where('user_id', '=', $user) -> where('type', '=', "Shoes") -> inRandomOrder()->get();
+                        $outfit_descriptions = array(
+                            'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
+                            'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
+                            'pants_descriptions' => OutfitGenerationController::getDescriptions($pants -> value('color')),
+                            'shoes_descriptions' => OutfitGenerationController::getDescriptions($shoes -> value('color')),
+                        ) ;
+                        $tries = $tries + 1;
+                        if($tries > 10){
+                            break;
+                        }
                     }
                 }
 
@@ -81,6 +123,46 @@ class OutfitGenerationController extends Controller
             }
         }
         if($neutral == 0 or $bright >1 or($cool_dark > 1)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function is_not_bright_outfit($outfits_desc){
+        $bright = 0;
+        $neutral = 0;
+        $cool_dark = 0;
+        foreach($outfits_desc as $item_desc){
+            if($item_desc[1] == "NEUTRAL"){
+                $neutral = $neutral + 1;
+            }elseif($item_desc[0] == "COOL" and $item_desc[1] == "DARK"){
+                $cool_dark = $cool_dark + 1;
+            }elseif($item_desc[1] == "BRIGHT"){
+                $bright = $bright + 1;
+            }
+        }
+        if($neutral == 0 or $bright > 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function is_bright_outfit($outfits_desc){
+        $bright = 0;
+        $neutral = 0;
+        $cool_dark = 0;
+        foreach($outfits_desc as $item_desc){
+            if($item_desc[1] == "NEUTRAL"){
+                $neutral = $neutral + 1;
+            }elseif($item_desc[0] == "COOL" and $item_desc[1] == "DARK"){
+                $cool_dark = $cool_dark + 1;
+            }elseif($item_desc[1] == "BRIGHT"){
+                $bright = $bright + 1;
+            }
+        }
+        if($neutral == 0 or $bright < 1){
             return false;
         }else{
             return true;
