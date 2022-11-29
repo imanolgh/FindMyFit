@@ -104,7 +104,25 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
      {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
    </form>
 
-    <button type="button"><a href="{{route('generate_outfit')}}">Generate Outfit</button>
+</div>
+
+<div class="container">
+    <form method="post" action="{{ route('generate_outfit') }}"
+          enctype="multipart/form-data">
+          @csrf
+          <div class="row">
+              <label class="col-md-4" align="right">Choose a type:</label>
+              <div class="col-md-8">
+              <input type="radio" name="outfit_type" value="Neutral">
+              <label>Neutral</label><br>
+              <input type="radio" name="outfit_type" value="Bright">
+              <label>Bright</label><br>
+              <input type="radio" name="outfit_type" value="Dark">
+              <label>Dark</label><br>
+          </div>
+          <input type="submit" value="Generate Outfit" >
+ 
+    </form>
 </div>
 
 <!-- Newsletter Modal -->
