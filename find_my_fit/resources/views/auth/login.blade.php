@@ -42,6 +42,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+            <a href="{{route('register')}}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline" style="margin-right: 20px;">Register</a>
                 <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline" style="margin-right: 20px;">Register</a>
 
                 @if (Route::has('password.request'))

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{{ asset('js/app.js') }}" defer></script>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -34,6 +35,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-bar w3-black">
     <a href="{{route('outfit_generation_page')}}" class="w3-bar-item w3-button">Outfit Generator</a>
     <a href="{{route('wardrobe')}}" class="w3-bar-item w3-button">Wardrobe</a>
+    <a href="{{route('register')}}" class="w3-bar-item w3-button">Log in/ Register</a>
+    <!--<a href="{{route('logout')}}" class="w3-bar-item w3-button">Log out</a>-->
     <!-- Register -->
     {{-- @if (Route::has('login'))
                <div>
@@ -89,14 +92,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <h1 id="temp"></h1>
       <div id="location"></div>
   </div>
+  <label for="Name"></label>
+  <input type="text" id="Name" name="Name">
+  <p>Click the button to submit city name (try "University City" or "Miami")</p>
 
-  <p>Click the button to get your coordinates.</p>
-
-  <button type="submit" id="loc" onclick="getLocation()">Get current weather conditions</button>
+  <button type="submit" id="loc" onclick="showPosition(document.getElementById('Name').value)">Get current weather conditions</button>
 
   <p id="demo"></p>
   
   <p>Enter the weather conditions to generate a suitable outfit</p>
+
 
   <form name="store_weather" id="store_weather" method="post" action="{{route('store_weather')}}">
     @csrf
@@ -179,24 +184,46 @@ function w3_close() {
 <script lang="text/javascript">
     var x = document.getElementById("demo");
     function getLocation() {
-      event.preventDefault(); 
+      alert("ahhh")
+      //event.preventDefault(); 
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, onError);
+        alert("ahh3")
       } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
+        alert("ahhh2")
       }
+    }
+    function onError(error) {
+      var txt;
+      switch(error.code)
+      {
+        case error.PERMISSION_DENIED:
+        txt = 'Location permission denied';
+        break;
+        case error.POSITION_UNAVAILABLE:
+        txt = 'Location position unavailable';
+        break;
+        case error.TIMEOUT:
+        txt = 'Location position lookup timed out';
+        break;
+        default:
+        txt = 'Unknown position.'
+      }
+      alert(txt)
     }
 
 
     function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude;
-      long = position.coords.longitude
-      lat = position.coords.latitude
+      // x.innerHTML = "Latitude: " + position.coords.latitude + 
+      // "<br>Longitude: " + position.coords.longitude;
+      // long = position.coords.longitude
+      // lat = position.coords.latitude
       
-    
+      var cityName = position
       var key = '4b8e7bbc342f87a6e521860430a27b2b';
-      fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long +'&appid=' + key)  
+      //fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long +'&appid=' + key)  
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName +'&appid=' + key)  
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
 

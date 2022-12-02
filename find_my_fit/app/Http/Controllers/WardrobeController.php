@@ -14,9 +14,14 @@ class WardrobeController extends Controller
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
 
-     $data = Images::where('user_id', $user_id)->latest()->paginate(5);
-     return view('wardrobe', compact('data'))
+     $data = Images::where('user_id', $user_id)->latest()->paginate(50);
+     return view('home', compact('data'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function delete_image($image_id){
+      Images::where('id', $image_id)->delete();
+      return redirect()->back()->with('success', 'Image deleted');
     }
 
     function insert_image(Request $request)
