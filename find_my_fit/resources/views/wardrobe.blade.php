@@ -30,24 +30,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       Season <i class="fa fa-caret-down"></i>
     </a>
     <div id="Season" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Spring</a>
-      <a href="#" class="w3-bar-item w3-button">Summer</a>
-      <a href="#" class="w3-bar-item w3-button">Fall</a>
-      <a href="#" class="w3-bar-item w3-button">Winter</a>
-    </div>
-    
-    <a onclick="expandCat(2)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Tops <i class="fa fa-caret-down"></i>
-    </a>
-    <div id="Top" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-       <a href="#" class="w3-bar-item w3-button">Shirt</a>
-      <a href="#" class="w3-bar-item w3-button">Jacket</a>
-    </div>
-    
-    <a href="#" class="w3-bar-item w3-button">Bottom</a>
-
-    <a href="#" class="w3-bar-item w3-button">Shoes</a>
-    
+      <a href="/wardrobe" class="w3-bar-item w3-button">All</a>
+      <a href="/wardrobe/inner" class="w3-bar-item w3-button">Innerwear</a>
+      <a href="/wardrobe/outter" class="w3-bar-item w3-button">Outterwear</a>
+      <a href="/wardrobe/bottom" class="w3-bar-item w3-button">Bottom</a>
+      <a href="/wardrobe/shoes" class="w3-bar-item w3-button">Shoes</a>
   </div>
   <!--
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 

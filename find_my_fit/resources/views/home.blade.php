@@ -68,11 +68,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
              <div class="row dropdown-center" >
               <button id="dropdownMenu1"class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">All</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Innerwear</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Outerwear</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Bottom</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Shoes</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe">All</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/inner">Innerwear</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/outter">Outerwear</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/bottom">Bottom</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/shoes">Shoes</a></li>
+
+               
               </ul>
              </div>
              

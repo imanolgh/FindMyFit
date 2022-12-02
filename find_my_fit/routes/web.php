@@ -45,6 +45,11 @@ Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController
 Route::get('/fetch_bottom/{bottom}', 'App\Http\Controllers\AccountController@fetch_bottom')->middleware(['auth', 'verified']);
 Route::get('/fetch_shoes/{shoes}', 'App\Http\Controllers\AccountController@fetch_shoes')->middleware(['auth', 'verified']);
 
+Route::get('/wardrobe/inner', 'App\Http\Controllers\WardrobeController@index_inner')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/outter', 'App\Http\Controllers\WardrobeController@index_outter')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/bottom', 'App\Http\Controllers\WardrobeController@index_bottom')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/shoes', 'App\Http\Controllers\WardrobeController@index_shoes')->middleware(['auth', 'verified']);
+
 
 Route::get('/outfit_generation', function () {
     return view('outfit_generation');
