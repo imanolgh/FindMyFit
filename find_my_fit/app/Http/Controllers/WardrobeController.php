@@ -19,6 +19,11 @@ class WardrobeController extends Controller
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function delete_image($image_id){
+      Images::where('id', $image_id)->delete();
+      return redirect()->back()->with('success', 'Image deleted');
+    }
+
     function insert_image(Request $request)
     {
      $request->validate([

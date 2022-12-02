@@ -77,6 +77,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
              </div>
              
             <button class="m-3 btn btn-info" type="button" onclick="window.location='/store_image'">Add Clothing</button>
+            
+              
               <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
                 @foreach($data as $row)
                 <div class="col">
@@ -87,7 +89,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     <div class="card-body">
                       <h5 class="card-title">{{ $row->user_name }}</h5>
                       <p class="card-text">{{ $row->type }}</p>
-                      
+                      <a href="wardrobe/delete_image/{{ $row->id }}">Delete</a>
+
                     </div>
                     
                   </div>
