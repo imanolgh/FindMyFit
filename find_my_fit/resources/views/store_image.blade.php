@@ -138,7 +138,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         <div class="row">
                             <label class="col-md-4" align="right">Choose a color:</label>
                             <div class="col-md-8">
-                                <input type="color" class="form-control form-control-color" id="color" name="color" value="#ff0000"><br><br>
+                                <input type="color" class="form-control form-control-color" id="color" name="color" value="#000000"><br><br>
                             </div>
                         </div>  
                         </div>
