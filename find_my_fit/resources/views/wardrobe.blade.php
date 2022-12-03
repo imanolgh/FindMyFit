@@ -30,7 +30,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       Season <i class="fa fa-caret-down"></i>
     </a>
     <div id="Season" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="/wardrobe" class="w3-bar-item w3-button">All</a>
+      <a href="/wardrobe/all" class="w3-bar-item w3-button">All</a>
       <a href="/wardrobe/inner" class="w3-bar-item w3-button">Innerwear</a>
       <a href="/wardrobe/outter" class="w3-bar-item w3-button">Outterwear</a>
       <a href="/wardrobe/bottom" class="w3-bar-item w3-button">Bottom</a>
@@ -118,7 +118,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
                   @foreach($data as $row)
                   <tr>
                    <td>
-                    <img src="store_image/fetch_image/{{ $row->id }}"  class="img-thumbnail" width="75" />
+                    <img src="wardrobe/fetch_Simage/{{ $row->id }}"  class="img-thumbnail" width="75" />
                    </td>
                    <td>{{ $row->type }}</td>
                    <td>{{ $row->user_name }}</td>
