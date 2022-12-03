@@ -91,7 +91,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     <div class="card-body">
                       <h5 class="card-title">{{ $row->user_name }}</h5>
                       <p class="card-text">{{ $row->type }}</p>
-                      <a href="wardrobe/delete_image/{{ $row->id }}">Delete</a>
+                      <a href="/delete_image/{{ $row->id }}">Delete</a>
 
                     </div>
                     
