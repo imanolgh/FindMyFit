@@ -38,7 +38,7 @@ Route::get('wardrobe/store_image/fetch_image/{id}', [StoreImageController::class
 
 Route::get('/wardrobe/all', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account');
-Route::get('delete_image/{id}', 'App\Http\Controllers\WardrobeController@delete_image')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/wardrobe/delete_image/{id}', 'App\Http\Controllers\WardrobeController@delete_image')->middleware(['auth', 'verified']);
 
 Route::get('/fetch_inner/{innerwear}', 'App\Http\Controllers\AccountController@fetch_inner')->middleware(['auth', 'verified']);
 Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController@fetch_outter')->middleware(['auth', 'verified']);

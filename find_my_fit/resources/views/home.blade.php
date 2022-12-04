@@ -190,6 +190,7 @@ disableScroll();
                       <div class="card-body">
                         <h5 class="card-title">{{ $row->user_name }}</h5>
                         <p class="card-text">{{ $row->type }}</p>
+                        <a href="delete_image/{{ $row->id }}">Delete</a>
                         
                       </div>
                       
