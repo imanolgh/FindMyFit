@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 </a>
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center" id="menu">
                   <li class="nav-item">
-                    <a href="/wardrobe" class="text-info nav-link align-middle py-3 px-2">
+                    <a href="/wardrobe/all" class="text-info nav-link align-middle py-3 px-2">
                         <i class="fs-2 bi-house"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Wardrobe</span>
                     </a>
                   </li>
