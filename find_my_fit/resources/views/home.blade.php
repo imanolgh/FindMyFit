@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 </a>
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center" id="menu">
                   <li class="nav-item">
-                    <a href="/wardrobe" class="text-info nav-link align-middle py-3 px-2">
+                    <a href="/wardrobe/all" class="text-info nav-link align-middle py-3 px-2">
                         <i class="fs-2 bi-house"></i> <span class="fs-4 ms-1 d-none d-sm-inline">Wardrobe</span>
                     </a>
                   </li>
@@ -68,15 +68,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
              <div class="row dropdown-center" >
               <button id="dropdownMenu1"class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">All</button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">All</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Innerwear</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Outerwear</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Bottom</a></li>
-                <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Shoes</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/all">All</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/inner">Innerwear</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/outter">Outerwear</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/bottom">Bottom</a></li>
+                <li><a class="dropdown-item" onclick="showGenre(this)" href="/wardrobe/shoes">Shoes</a></li>
+
+               
               </ul>
              </div>
              
             <button class="m-3 btn btn-info" type="button" onclick="window.location='/store_image'">Add Clothing</button>
+            
+              
               <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
                 @foreach($data as $row)
                 <div class="col">
@@ -87,7 +91,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     <div class="card-body">
                       <h5 class="card-title">{{ $row->user_name }}</h5>
                       <p class="card-text">{{ $row->type }}</p>
-                      
+                      <a href="/delete_image/{{ $row->id }}">Delete</a>
+
                     </div>
                     
                   </div>

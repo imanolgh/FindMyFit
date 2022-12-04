@@ -34,15 +34,21 @@ Route::get('store_image', [StoreImageController::class, 'index'])->middleware(['
 
 Route::post('store_image/insert_image', [StoreImageController::class, 'insert_image'])->middleware(['auth', 'verified']);
 
-Route::get('store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image'])->middleware(['auth', 'verified']);
+Route::get('wardrobe/store_image/fetch_image/{id}', [StoreImageController::class, 'fetch_image'])->middleware(['auth', 'verified']);
 
-Route::get('/wardrobe', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
+Route::get('/wardrobe/all', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
 Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account');
+Route::get('delete_image/{id}', 'App\Http\Controllers\WardrobeController@delete_image')->middleware(['auth', 'verified']);
 
 Route::get('/fetch_inner/{innerwear}', 'App\Http\Controllers\AccountController@fetch_inner')->middleware(['auth', 'verified']);
 Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController@fetch_outter')->middleware(['auth', 'verified']);
 Route::get('/fetch_bottom/{bottom}', 'App\Http\Controllers\AccountController@fetch_bottom')->middleware(['auth', 'verified']);
 Route::get('/fetch_shoes/{shoes}', 'App\Http\Controllers\AccountController@fetch_shoes')->middleware(['auth', 'verified']);
+
+Route::get('/wardrobe/inner', 'App\Http\Controllers\WardrobeController@index_inner')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/outter', 'App\Http\Controllers\WardrobeController@index_outter')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/bottom', 'App\Http\Controllers\WardrobeController@index_bottom')->middleware(['auth', 'verified']);
+Route::get('/wardrobe/shoes', 'App\Http\Controllers\WardrobeController@index_shoes')->middleware(['auth', 'verified']);
 
 
 Route::get('/outfit_generation', function () {
