@@ -108,7 +108,7 @@ class AccountController extends Controller
   
        $data = Outfit::where('user_id', $user_id)->latest()->paginate(5);
         //  $data = Outfit::latest()->paginate(5);
-        return view('account', compact('data'))
+        return view('account_social', compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'));
     }
     public function delete_outfit($outfit_id){
