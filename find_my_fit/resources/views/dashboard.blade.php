@@ -100,14 +100,20 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-             
+
+                @if(session()->has('failure'))
+                <div class="alert alert-danger">
+                {{ session()->get('failure') }}
+                </div>
+                @endif
+
                   <form method="post" action="{{ route('generate_outfit') }}"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <label class="col-md-4" align="right">Choose a type:</label>
                             <div class="col-md-8">
-                            <input type="radio" name="outfit_type" value="Neutral">
+                            <input type="radio" name="outfit_type" value="Neutral" checked="checked">
                             <label>Neutral</label><br>
                             <input type="radio" name="outfit_type" value="Bright">
                             <label>Bright</label><br>

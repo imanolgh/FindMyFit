@@ -33,6 +33,8 @@ class OutfitGenerationController extends Controller
                 $temp = DB::table('weather') -> where('user_id', '=', $user) -> latest() -> first()->temp;
             }
 
+            
+
             if($temp < 71){
                 $weather_msg = OutfitGenerationController::get_weather_message(intval($temp));
                 $inner_shirt = Images::where('user_id', '=', $user) -> where('type', '=', "Innerwear") -> inRandomOrder()->get();
@@ -42,7 +44,10 @@ class OutfitGenerationController extends Controller
 
                 $tries = 0;
 
-            
+                if(($inner_shirt->first() == null) or ($outer_wear->first() == null) or ($pants->first() == null) or ($shoes->first() == null)){
+                    return redirect()->back()->with('failure', 'need at least one of each clothing type');
+                }
+
                 $outfit_descriptions = array(
                     'inner_shirt_descriptions' => OutfitGenerationController::getDescriptions($inner_shirt -> value('color')),
                     'outer_wear_descriptions' => OutfitGenerationController::getDescriptions($outer_wear -> value('color')),
