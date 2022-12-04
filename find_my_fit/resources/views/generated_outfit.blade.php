@@ -77,7 +77,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 <div class="card" id="{{$row->id}}"style="max-width: 540px; background-color: {{$row->color}};">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="store_image/fetch_image/{{$row->id}}" class="img-fluid rounded-start" width="75">
+                      <img src="wardrobe/store_image/fetch_image/{{$row->id}}" class="img-fluid rounded-start" width="75">
                     </div>
                     
                     <div class="col-md-8">
@@ -101,9 +101,25 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
         
         </div>
 
-        <div class="m-3">
+        <!-- <div class="m-3">
           <button class="btn btn-info" type="button"><a class="text-decoration-none text-black" href="{{route('generate_outfit')}}">Generate New Outfit</button>
-        </div>
+        </div> -->
+        <form method="post" action="{{ route('generate_outfit') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <label class="col-md-4" align="right">Choose a type:</label>
+                            <div class="col-md-8">
+                            <input type="radio" name="outfit_type" value="Neutral">
+                            <label>Neutral</label><br>
+                            <input type="radio" name="outfit_type" value="Bright">
+                            <label>Bright</label><br>
+                            <input type="radio" name="outfit_type" value="Dark">
+                            <label>Dark</label><br>
+                        </div>
+                        <input class="btn btn-primary m-3" type="submit" value="Generate Outfit" >
+              
+        </form>
         <div class="m-3">
           <form method="post" action="{{ route('store-outfit') }}"
             enctype="multipart/form-data">
