@@ -110,7 +110,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         <div class="row">
                             <label class="col-md-4" align="right">Choose a type:</label>
                             <div class="col-md-8">
-                            <input type="radio" name="outfit_type" value="Neutral">
+                            <input type="radio" name="outfit_type" value="Neutral" checked="checked">
                             <label>Neutral</label><br>
                             <input type="radio" name="outfit_type" value="Bright">
                             <label>Bright</label><br>
