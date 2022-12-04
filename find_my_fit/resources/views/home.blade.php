@@ -15,7 +15,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
 }
 
     </style>
-<body>
+<body onload="downLoad()">
 
   <div class="container-fluid">
       <div class="row flex-nowrap">
@@ -75,24 +75,126 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 <li><a class="dropdown-item" onclick="showGenre(this)" href="#">Shoes</a></li>
               </ul>
              </div>
-             
+<style>
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+   
+   -webkit-column-count: 4;
+   -webkit-column-gap:   30px;
+   -moz-column-count:    4;
+   -moz-column-gap:      30px;
+   column-count:         4;
+   column-gap:           30px;
+   orphans: 3;
+   
+}
+
+#imgphoto {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible;
+}
+
+figure {
+    break-inside: avoid;
+}
+.layer1_class { 
+  position: absolute;
+  z-index: 1; 
+  top: 100px; 
+  left: 0px; 
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0; 
+}
+.layer2_class { position: absolute; z-index: 2; top: 10px; left: 10px; visibility: hidden }
+
+</style>
+
+    <script>
+      var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; } 
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+// call this to Disable
+function disableScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+// call this to Enable
+function enableScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+disableScroll();
+
+      function downLoad(){
+        if (document.all){
+          enableScroll();
+          document.all["layer1"].style.visibility="hidden";
+        } else if (document.getElementById){
+          enableScroll();
+          node = document.getElementById("layer1").style.visibility='hidden';
+        }
+      }
+   
+      
+    </script>
             <button class="m-3 btn btn-info" type="button" onclick="window.location='/store_image'">Add Clothing</button>
-              <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
+            <div id="layer1" class="layer1_class">
+              <table width="100%">
+                <tr>
+                  <td align="center"><strong><em>Please wait while this page is loading...</em></strong></p></td>
+                </tr>
+              </table>
+            </div>
+              <div id="photos" class="m-5">
                 @foreach($data as $row)
-                <div class="col">
-                
-                  <div class="card">
-                    
-                    <img src="store_image/fetch_image/{{ $row->id }}" class="card-img-top" height=200>
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $row->user_name }}</h5>
-                      <p class="card-text">{{ $row->type }}</p>
+                <figure>
+                  <div id="imgphoto" class="p-2" style="">
+                  
+                    <div style="" class="card">
+                      
+                      <img  src="store_image/fetch_image/{{ $row->id }}" class="card-img-top" >
+                      <div class="card-body">
+                        <h5 class="card-title">{{ $row->user_name }}</h5>
+                        <p class="card-text">{{ $row->type }}</p>
+                        
+                      </div>
                       
                     </div>
                     
                   </div>
-                  
-                </div>
+                </figure>
                 @endforeach
                 
 
