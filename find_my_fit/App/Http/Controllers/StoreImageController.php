@@ -39,6 +39,17 @@ class StoreImageController extends Controller
      
      $user = Auth::user(); // get currently logged in user
      $user_id = $user->id; // get the user's id
+     if(!Images::exists()){
+      $form_data = array(
+        'user_name'  => NULL,
+        'user_image' => NULL,
+        'type' => NULL,
+        'color'=> NULL,
+        'user_id' => 0
+       );
+       Images::create($form_data);
+     }
+
      $form_data = array(
       'user_name'  => $request->user_name,
       'user_image' => $image,
