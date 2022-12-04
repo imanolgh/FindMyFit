@@ -77,7 +77,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 <div class="card" id="{{$row->id}}"style="max-width: 540px; background-color: {{$row->color}};">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="store_image/fetch_image/{{$row->id}}" class="img-fluid rounded-start" width="75">
+                      <img src="wardrobe/store_image/fetch_image/{{$row->id}}" class="img-fluid rounded-start" width="75">
                     </div>
                     
                     <div class="col-md-8">
