@@ -117,7 +117,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                                     <img src="/fetch_shoes/{{ $row->shoes }}"  class="img-thumbnail" width="75" />
                                 </td>
                                 <td>
-                                <a href="/delete_image/{{ $row->id }}">Delete</a>
+
+                                  
+                                <a href="/account/delete_outfit/{{ $row->id }}">Delete</a>
                                 </td>
                                 </tr>
                                 @endforeach

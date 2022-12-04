@@ -417,9 +417,8 @@ class OutfitGenerationController extends Controller
     
     //  $user_email = $user->email;
     // $user_name = $user->name
-    return view('account', compact('data'))
+    return redirect('account')
         ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'))->with(compact('email'));
-   
    
     }
 

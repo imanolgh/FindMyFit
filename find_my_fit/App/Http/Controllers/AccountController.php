@@ -111,7 +111,7 @@ class AccountController extends Controller
         return view('account', compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'));
     }
-    public function delete_image($outfit_id){
+    public function delete_outfit($outfit_id){
         Outfit::where('id', $outfit_id)->delete();
         return redirect()->back()->with('success', 'Outfit deleted');
       }
