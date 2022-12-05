@@ -47,6 +47,11 @@ Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController
 Route::get('/fetch_bottom/{bottom}', 'App\Http\Controllers\AccountController@fetch_bottom')->middleware(['auth', 'verified']);
 Route::get('/fetch_shoes/{shoes}', 'App\Http\Controllers\AccountController@fetch_shoes')->middleware(['auth', 'verified']);
 
+Route::get('/fetch_inner/{innerwear}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_inner')->middleware(['auth', 'verified']);
+Route::get('/fetch_outter/{outterwear}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_outter')->middleware(['auth', 'verified']);
+Route::get('/fetch_bottom/{bottom}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_bottom')->middleware(['auth', 'verified']);
+Route::get('/fetch_shoes/{shoes}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_shoes')->middleware(['auth', 'verified']);
+
 Route::get('/wardrobe/inner', 'App\Http\Controllers\WardrobeController@index_inner')->middleware(['auth', 'verified']);
 Route::get('/wardrobe/outter', 'App\Http\Controllers\WardrobeController@index_outter')->middleware(['auth', 'verified']);
 Route::get('/wardrobe/bottom', 'App\Http\Controllers\WardrobeController@index_bottom')->middleware(['auth', 'verified']);

@@ -109,7 +109,7 @@ class AccountController extends Controller
        $data = Outfit::where('user_id', $user_id)->latest()->paginate(5);
         //  $data = Outfit::latest()->paginate(5);
         return view('account_social', compact('data'))
-            ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'));
+            ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'))->with(compact('user_id'));
     }
     public function delete_outfit($outfit_id){
         Outfit::where('id', $outfit_id)->delete();
@@ -121,5 +121,77 @@ class AccountController extends Controller
         $social_data = User::where('id', '!=', $user) ->get();
 
         return view('social')->with(compact('social_data'));
+    }
+
+    function social_fetch_inner($innerwear, $user_id)
+    {
+        // $user = Auth::user(); // get currently logged in user
+        // $user_id = $user->id; // get the user's id
+
+        $innerwear_image = Images::where('id', $innerwear)
+        ->where('user_id', $user_id)
+        ->firstOrFail();
+       
+        $image_file = Image::make($innerwear_image->user_image);
+
+        $response = Response::make($image_file->encode('jpeg'));
+
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
+    }
+
+    function social_fetch_outter($outterwear, $user_id)
+    {
+        // $user = Auth::user(); // get currently logged in user
+        // $user_id = $user->id; // get the user's id
+
+        $outterwear_image = Images::where('id', $outterwear)
+        ->where('user_id', $user_id)
+        ->firstOrFail();
+       
+        $image_file = Image::make($outterwear_image->user_image);
+
+        $response = Response::make($image_file->encode('jpeg'));
+
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
+    }
+
+    function social_fetch_bottom($bottom, $user_id)
+    {
+        // $user = Auth::user(); // get currently logged in user
+        // $user_id = $user->id; // get the user's id
+
+        $bottom_image = Images::where('id', $bottom)
+        ->where('user_id', $user_id)
+        ->firstOrFail();
+       
+        $image_file = Image::make($bottom_image->user_image);
+
+        $response = Response::make($image_file->encode('jpeg'));
+
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
+    }
+
+    function social_fetch_shoes($shoes, $user_id)
+    {
+        // $user = Auth::user(); // get currently logged in user
+        // $user_id = $user->id; // get the user's id
+
+        $shoes_image = Images::where('id', $shoes)
+        ->where('user_id', $user_id)
+        ->firstOrFail();
+       
+        $image_file = Image::make($shoes_image->user_image);
+
+        $response = Response::make($image_file->encode('jpeg'));
+
+        $response->header('Content-Type', 'image/jpeg');
+
+        return $response;
     }
 }

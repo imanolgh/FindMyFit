@@ -100,20 +100,21 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                                     <th width="22%">Bottom</th>
                                     <th width="22%">Shoes</th>
                                 </tr>
+                                {{-- {{ dd($user_id); }} --}}
                                 @foreach($data as $row)
                                 {{-- {{ var_dump($row->outterwear); }} --}}
                                 <tr>
                                 <td>
-                                    <img src="/fetch_inner/{{ $row->innerwear }}"  class="img-thumbnail" width="75" />
+                                    <img src="/fetch_inner/{{ $row->innerwear }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
                                 </td>
                                 <td>
-                                <img src="/fetch_outter/{{ $row->outterwear }}"  class="img-thumbnail" width="75" />
+                                <img src="/fetch_outter/{{ $row->outterwear }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
                                 </td>
                                 <td>
-                                <img src="/fetch_bottom/{{ $row->bottom }}"  class="img-thumbnail" width="75" />
+                                <img src="/fetch_bottom/{{ $row->bottom }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
                                 </td>
                                 <td>
-                                    <img src="/fetch_shoes/{{ $row->shoes }}"  class="img-thumbnail" width="75" />
+                                    <img src="/fetch_shoes/{{ $row->shoes }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
                                 </td>
                                 </tr>
                                 @endforeach
