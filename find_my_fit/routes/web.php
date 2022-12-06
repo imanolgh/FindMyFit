@@ -70,6 +70,14 @@ Route::post('/generated_outfit', [App\Http\Controllers\OutfitGenerationControlle
 Route::get('/social_page', [App\Http\Controllers\AccountController::class, 'get_social_page'])->middleware(['auth', 'verified'])->name('get_social_page');
 Route::post('/store_user_id', 'App\Http\Controllers\AccountController@get_other_account')->middleware(['auth', 'verified'])->name('get_other_account');
 Route::get('/search_user', 'App\Http\Controllers\AccountController@search_user')->middleware(['auth', 'verified'])->name('search_user');
+Route::get('/following', 'App\Http\Controllers\AccountController@following')->middleware(['auth', 'verified'])->name('following');
+Route::get('/followers', 'App\Http\Controllers\AccountController@followers')->middleware(['auth', 'verified'])->name('followers');
+Route::post('/follow', 'App\Http\Controllers\AccountController@follow')->middleware(['auth', 'verified'])->name('follow');
+Route::post('/unfollow', 'App\Http\Controllers\AccountController@unfollow')->middleware(['auth', 'verified'])->name('unfollow');
+Route::post('/removeFollower', 'App\Http\Controllers\AccountController@removeFollower')->middleware(['auth', 'verified'])->name('removeFollower');
+
+
+
 
 
 Route::get('/get_weather', 'App\Http\Controllers\WeatherController@get_weather')->middleware(['auth', 'verified'])->name('get_weather');

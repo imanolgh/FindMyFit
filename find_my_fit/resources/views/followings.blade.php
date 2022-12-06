@@ -80,34 +80,33 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 
                     <div></div>
                     <div></div>
-                    <a  href="/following">Following</a>
                     <a  href="/followers">Followers</a>
-
 
             </div>
             <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
-                @foreach($social_data as $person)
+                @foreach($followings as $f)
                 <div class="col">
                 
                     <div class="card text-dark bg-light" style="max-width: 18rem;">
                         <div class="card-header">User</div>
                         <div class="card-body">
-                        <h5 class="card-title">{{$person->name}}</h5>
-                        <p class="card-text">{{$person ->email}}</p>
+                        <h5 class="card-title">{{$f->name}}</h5>
+                        <p class="card-text">{{$f->email}}</p>
                         <form method="post" action="{{ route('get_other_account') }}"
                             enctype="multipart/form-data">
                             @csrf
-                            <input type='hidden' name='user_id' value='{{ $person->id}}'>
+                            <input type='hidden' name='user_id' value='{{ $f->id}}'>
                             <input type="submit" value="view account" >
             
                         </form>
-                        <form method="post" action="{{ route('follow') }}"
-                            enctype="multipart/form-data">
-                            @csrf
-                            <input type='hidden' name='user_id' value='{{ $person->id}}'>
-                            <input type="submit" value="follow" >
-            
-                        </form>
+
+                        <form method="post" action="{{ route('unfollow') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <input type='hidden' name='user_id' value='{{ $f->id}}'>
+                        <input type="submit" value="unfollow" >
+        
+                    </form>
                     </div>
                     
                   </div>
