@@ -65,6 +65,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
               </div>
           </div>
         <div class="col py-3">
+          <form action="/search_user" method="GET" role="search">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input type="text" class="form-control" name="search_user"
+                    placeholder="Search users"> <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </form>
             <div>
                 
                     <div></div>
@@ -74,7 +85,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
             <div class="row row-cols-1 row-cols-sm-3 g-4 m-4">
                 @foreach($social_data as $person)
                 <div class="col">
-                
                     <div class="card text-dark bg-light" style="max-width: 18rem;">
                         <div class="card-header">User</div>
                         <div class="card-body">

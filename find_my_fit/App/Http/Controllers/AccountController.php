@@ -195,4 +195,16 @@ class AccountController extends Controller
 
         return $response;
     }
+
+    public function search_user(Request $request) {
+        $user = Auth::user(); // get currently logged in user
+        $username = $user->name;
+        $search = $request->input('search_user');
+
+        // Search in the title and body columns from the posts table
+        $social_data = User::where('name', $search)->get();
+    
+        // Return the search view with the resluts compacted
+        return view('social')->with(compact('social_data'))->with(compact('username'));
+    }
 }
