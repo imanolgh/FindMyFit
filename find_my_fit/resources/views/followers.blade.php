@@ -101,7 +101,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
             
                         </form>
 
-                        <form method="post" action="{{ route('unfollow') }}"
+                        <form method="post" action="{{ route('removeFollower') }}"
                         enctype="multipart/form-data">
                         @csrf
                         <input type='hidden' name='user_id' value='{{ $f->id}}'>

@@ -242,17 +242,17 @@ class AccountController extends Controller
         $user_id = $user->id;
         $following_id = $request->user_id;
 
-        $user->followers()->detach($following_id);
+        $user->followings()->detach($following_id);
         return redirect()->route('following');
     }
 
-    public function removeFollower() {
+    public function removeFollower(Request $request) {
         $user = Auth::user(); // get currently logged in user
         $username = $user->name;
         $user_id = $user->id;
         $follower_id = $request->user_id;
 
-        $user->followings()->detach($follower_id);
-        return redirect()->route('follow');
+        $user->followers()->detach($follower_id);
+        return redirect()->route('followers');
     }
 }
