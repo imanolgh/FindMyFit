@@ -23,36 +23,42 @@ class WardrobeController extends Controller
     function index_inner(){
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
+      $username = $user->name; // get the user's id
+
 
      $data = Images::where('user_id', $user_id)-> where('type', '=', "Innerwear")->latest()->paginate(5);
      return view('home', compact('data'))
-       ->with('i', (request()->input('page', 1) - 1) * 5);
+       ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'));
     }
 
     function index_outter(){
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
+      $username = $user->name; // get the user's id
+
 
      $data = Images::where('user_id', $user_id)-> where('type', '=', "Outterwear")->latest()->paginate(5);
      return view('home', compact('data'))
-       ->with('i', (request()->input('page', 1) - 1) * 5);
+       ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'));
     }
 
     function index_bottom(){
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
+      $username = $user->name; // get the user's id
 
      $data = Images::where('user_id', $user_id)-> where('type', '=', "Bottom")->latest()->paginate(5);
      return view('home', compact('data'))
-       ->with('i', (request()->input('page', 1) - 1) * 5);
+       ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'));
     }
     function index_shoes(){
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
+      $username = $user->name; // get the user's id
 
      $data = Images::where('user_id', $user_id)-> where('type', '=', "Shoes")->latest()->paginate(5);
      return view('home', compact('data'))
-       ->with('i', (request()->input('page', 1) - 1) * 5);
+       ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'));
     }
 
     public function delete_image($image_id){
