@@ -100,6 +100,8 @@ class AccountController extends Controller
     }
 
     function get_other_account(Request $request){
+        $logged_user = Auth::user(); // get currently logged in user
+        $logged_user_name = $logged_user->name; // get the user's id
         $user_id = $request->user_id;
         $user = User::where('id', '=', $user_id) ->get();
         $user_id = $user->value('id'); // get the user's id
@@ -109,7 +111,7 @@ class AccountController extends Controller
        $data = Outfit::where('user_id', $user_id)->latest()->paginate(5);
         //  $data = Outfit::latest()->paginate(5);
         return view('account_social', compact('data'))
-            ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'))->with(compact('user_id'));
+            ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('email'))->with(compact('username'))->with(compact('user_id'))->with(compact('logged_user_name'));
     }
     public function delete_outfit($outfit_id){
         Outfit::where('id', $outfit_id)->delete();
