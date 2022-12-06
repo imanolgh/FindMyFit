@@ -81,6 +81,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                     <div></div>
                     <div></div>
                     <a  href="/social_page">Discover</a>
+                    <a  href="/following">Following</a>
                     <a  href="/followers">Followers</a>
 
             </div>
