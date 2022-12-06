@@ -40,6 +40,7 @@ Route::get('/wardrobe/all', 'App\Http\Controllers\WardrobeController@index')->mi
 Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account');
 Route::get('/wardrobe/wardrobe/delete_image/{id}', 'App\Http\Controllers\WardrobeController@delete_image')->middleware(['auth', 'verified']);
 Route::get('/account_social', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account_social');
+
 Route::get('/account/delete_outfit/{id}', 'App\Http\Controllers\AccountController@delete_outfit')->middleware(['auth', 'verified']);
 Route::get('/fetch_inner/{innerwear}', 'App\Http\Controllers\AccountController@fetch_inner')->middleware(['auth', 'verified']);
 Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController@fetch_outter')->middleware(['auth', 'verified']);
