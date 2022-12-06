@@ -104,7 +104,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         enctype="multipart/form-data">
                         @csrf
                         <input type='hidden' name='user_id' value='{{ $f->id}}'>
-                        <input type="submit" value="unfollow" >
+                        <input type="submit" value="remove follower" >
         
                     </form>
                     </div>

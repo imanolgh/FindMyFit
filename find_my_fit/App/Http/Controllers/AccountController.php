@@ -242,7 +242,7 @@ class AccountController extends Controller
         $user_id = $user->id;
         $following_id = $request->user_id;
 
-        $user->followings()->detach($following_id);
+        $user->followers()->detach($following_id);
         return redirect()->route('following');
     }
 
