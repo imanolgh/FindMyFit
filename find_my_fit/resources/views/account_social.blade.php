@@ -68,7 +68,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
             <div class="container">    
                 <br />
                 <h3 align="left">Username : {{$username}}</h3>
-                <h3 align="left">Email : {{$email}}</h3>
                 <br />
                 @if($errors->any())
                 <div class="alert alert-danger">

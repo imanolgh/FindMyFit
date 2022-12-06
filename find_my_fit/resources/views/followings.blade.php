@@ -92,7 +92,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         <div class="card-header">User</div>
                         <div class="card-body">
                         <h5 class="card-title">{{$f->name}}</h5>
-                        <p class="card-text">{{$f->email}}</p>
                         <form method="post" action="{{ route('get_other_account') }}"
                             enctype="multipart/form-data">
                             @csrf
