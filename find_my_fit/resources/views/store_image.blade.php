@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                 <div class="position-fixed pb-4" style="bottom: 0px">
                   <a href="#" class=" text-secondary d-flex align-items-center text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fs-2 bi-person-circle"></i>
-                    <span class="d-none d-sm-inline mx-1">Username</span>
+                    <span class="d-none d-sm-inline mx-1">{{ $username }}</span>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/account">Profile</a></li>

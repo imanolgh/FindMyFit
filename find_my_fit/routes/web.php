@@ -23,7 +23,9 @@ Route::get('/home', function () {
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/fitme', function () {
-    return view('dashboard');
+    $user = Auth::user(); // get currently logged in user
+    $username = $user->name;
+    return view('dashboard')->with(compact('username'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe');
