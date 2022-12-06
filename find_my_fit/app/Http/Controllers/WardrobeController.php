@@ -13,10 +13,11 @@ class WardrobeController extends Controller
     {
       $user = Auth::user(); // get currently logged in user
       $user_id = $user->id; // get the user's id
+      $username = $user->name;
 
      $data = Images::where('user_id', $user_id)->latest()->paginate(50);
      return view('home', compact('data'))
-       ->with('i', (request()->input('page', 1) - 1) * 5);
+       ->with('i', (request()->input('page', 1) - 1) * 5)->with(compact('username'));
     }
 
     function index_inner(){

@@ -118,9 +118,10 @@ class AccountController extends Controller
     function get_social_page()
     {
         $user = Auth::id();
+        $logged_in_user = Auth::user();
+        $username = $logged_in_user->name;
         $social_data = User::where('id', '!=', $user) ->get();
-
-        return view('social')->with(compact('social_data'));
+        return view('social')->with(compact('social_data'))->with(compact('username'));
     }
 
     function social_fetch_inner($innerwear, $user_id)
