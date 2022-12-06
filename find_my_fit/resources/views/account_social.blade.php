@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Clothing</title>
+    <title>Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -16,9 +15,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
 }
 
     </style>
-</head>
+<body>
 
-<div class="container-fluid">
+  <div class="container-fluid">
       <div class="row flex-nowrap">
           <div class="min-vh-100 col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light sticky-top">
              <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
@@ -66,71 +65,67 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
               </div>
           </div>
         <div class="col py-3">
+            <div class="container">    
+                <br />
+                <h3 align="left">Username : {{$username}}</h3>
+                <h3 align="left">Email : {{$email}}</h3>
+                <br />
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                    </div>
+                @endif
 
-          <header class="w3-container w3-xlarge">
-            <p class="w3-left">Suggested Outfit</p>
-          
-          </header>
-            <div>
-              <div>{{$weather_msg}}</div>
-              <?php foreach($outfit_data as $row) : ?>
-                <div class="card" id="{{$row->id}}"style="max-width: 540px; background-color: {{$row->color}};">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="wardrobe/store_image/fetch_image/{{$row->id}}" class="img-fluid rounded-start" width="75">
-                    </div>
-                    
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">{{$row->user_name}}</h5>
-                        <!-- <p class="card-text">Classification</p> -->
-                      </div>
-                    </div>
-                  </div>
+                @if(session()->has('success'))
+                <div class="alert alert-success">
+                {{ session()->get('success') }}
                 </div>
-              <?php endforeach; ?>
-               
-            </div>   
-        <div style = "margin-left:50px">
+                @endif
+                <br />
 
-          @foreach($outfit_descriptions as $row)
-          <div>{{$row[0]}}</div>
-          <div>{{$row[1]}}</div>
-          @endforeach
-        
-        
-        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Favorite list</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th width="22%">Innerwear</th>
+                                    <th width="22%">Outterwear</th>
+                                    <th width="22%">Bottom</th>
+                                    <th width="22%">Shoes</th>
+                                </tr>
+                                {{-- {{ dd($user_id); }} --}}
+                                @foreach($data as $row)
+                                {{-- {{ var_dump($row->outterwear); }} --}}
+                                <tr>
+                                <td>
+                                    <img src="/fetch_inner/{{ $row->innerwear }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
+                                </td>
+                                <td>
+                                <img src="/fetch_outter/{{ $row->outterwear }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
+                                </td>
+                                <td>
+                                <img src="/fetch_bottom/{{ $row->bottom }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
+                                </td>
+                                <td>
+                                    <img src="/fetch_shoes/{{ $row->shoes }}/{{ $user_id }}"  class="img-thumbnail" width="75" />
+                                </td>
+                                </tr>
+                                @endforeach
 
-        <!-- <div class="m-3">
-          <button class="btn btn-info" type="button"><a class="text-decoration-none text-black" href="{{route('generate_outfit')}}">Generate New Outfit</button>
-        </div> -->
-        <form method="post" action="{{ route('generate_outfit') }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <label class="col-md-4" align="right">Choose a type:</label>
-                            <div class="col-md-8">
-                            <input type="radio" name="outfit_type" value="Neutral" checked="checked">
-                            <label>Neutral</label><br>
-                            <input type="radio" name="outfit_type" value="Bright">
-                            <label>Bright</label><br>
-                            <input type="radio" name="outfit_type" value="Dark">
-                            <label>Dark</label><br>
+                            </table>
+                            {!! $data->links() !!}
+                            </div>
                         </div>
-                        <input class="btn btn-primary m-3" type="submit" value="Generate Outfit" >
-              
-        </form>
-        <div class="m-3">
-          <form method="post" action="{{ route('store-outfit') }}"
-            enctype="multipart/form-data">
-          @csrf
-          @foreach ($outfit_data as $data)
-          <input type='hidden' name='outfit_data[]' value='{{ $data->id }}'>
-          @endforeach
-        
-          <input class="btn btn-info" type="submit" value="Add to Favorites" >
-        
-          </form>
+                </div>
+            </div>
         </div>
-    
+    </div>
+ </body>
 </html>

@@ -95,10 +95,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                         <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
                                 <tr>
-                                    <th width="25%">Innerwear</th>
-                                    <th width="25%">Outterwear</th>
-                                    <th width="25%">Bottom</th>
-                                    <th width="25%">Shoes</th>
+                                    <th width="22%">Innerwear</th>
+                                    <th width="22%">Outterwear</th>
+                                    <th width="22%">Bottom</th>
+                                    <th width="22%">Shoes</th>
+                                    <th width="12%">Delete</th>
                                 </tr>
                                 @foreach($data as $row)
                                 {{-- {{ var_dump($row->outterwear); }} --}}
@@ -114,6 +115,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {
                                 </td>
                                 <td>
                                     <img src="/fetch_shoes/{{ $row->shoes }}"  class="img-thumbnail" width="75" />
+                                </td>
+                                <td>
+
+                                  
+                                <a href="/account/delete_outfit/{{ $row->id }}">Delete</a>
                                 </td>
                                 </tr>
                                 @endforeach

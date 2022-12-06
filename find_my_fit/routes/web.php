@@ -39,11 +39,17 @@ Route::get('wardrobe/store_image/fetch_image/{id}', [StoreImageController::class
 Route::get('/wardrobe/all', 'App\Http\Controllers\WardrobeController@index')->middleware(['auth', 'verified'])->name('wardrobe-all');
 Route::get('/account', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account');
 Route::get('/wardrobe/wardrobe/delete_image/{id}', 'App\Http\Controllers\WardrobeController@delete_image')->middleware(['auth', 'verified']);
-
+Route::get('/account_social', 'App\Http\Controllers\AccountController@index')->middleware(['auth', 'verified'])->name('account_social');
+Route::get('/account/delete_outfit/{id}', 'App\Http\Controllers\AccountController@delete_outfit')->middleware(['auth', 'verified']);
 Route::get('/fetch_inner/{innerwear}', 'App\Http\Controllers\AccountController@fetch_inner')->middleware(['auth', 'verified']);
 Route::get('/fetch_outter/{outterwear}', 'App\Http\Controllers\AccountController@fetch_outter')->middleware(['auth', 'verified']);
 Route::get('/fetch_bottom/{bottom}', 'App\Http\Controllers\AccountController@fetch_bottom')->middleware(['auth', 'verified']);
 Route::get('/fetch_shoes/{shoes}', 'App\Http\Controllers\AccountController@fetch_shoes')->middleware(['auth', 'verified']);
+
+Route::get('/fetch_inner/{innerwear}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_inner')->middleware(['auth', 'verified']);
+Route::get('/fetch_outter/{outterwear}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_outter')->middleware(['auth', 'verified']);
+Route::get('/fetch_bottom/{bottom}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_bottom')->middleware(['auth', 'verified']);
+Route::get('/fetch_shoes/{shoes}/{user_id}', 'App\Http\Controllers\AccountController@social_fetch_shoes')->middleware(['auth', 'verified']);
 
 Route::get('/wardrobe/inner', 'App\Http\Controllers\WardrobeController@index_inner')->middleware(['auth', 'verified']);
 Route::get('/wardrobe/outter', 'App\Http\Controllers\WardrobeController@index_outter')->middleware(['auth', 'verified']);
